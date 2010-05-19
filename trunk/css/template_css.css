@@ -1,0 +1,42 @@
+.gk_vm_scroller_container_1 {
+	
+}
+.gk_vm_scroller_container_2 {
+	FLOAT: left
+}
+DIV.gk_vm_product_block {
+	FLOAT: left
+}
+.gk_vm_scroller_container_3 {
+	
+}
+.gk_vm_scroller_left {
+	BACKGROUND: url(../images/gk_vm_next.png) no-repeat 0px 0px; FLOAT: right; WIDTH: 11px; CURSOR: pointer; HEIGHT: 11px
+}
+.gk_vm_scroller_right {
+	BACKGROUND: url(../images/gk_vm_next.png) no-repeat 0px 0px; FLOAT: right; WIDTH: 11px; CURSOR: pointer; HEIGHT: 11px
+}
+.gk_vm_scroller_right {
+	BACKGROUND: url(../images/gk_vm_prev.png) no-repeat 0px 0px; MARGIN-RIGHT: 2px
+}
+gk_vm_pagin {
+	CLEAR: both; POSITION: relative
+}
+DIV.gk_vm_product_block {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/box-defright.png) no-repeat right bottom; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 4px; OVERFLOW: hidden; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+DIV.gk_vm_product_block DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/box-defleft.png) no-repeat left bottom; MARGIN-BOTTOM: -6px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; HEIGHT: 100%
+}
+DIV.gk_vm_product_block DIV DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/box-deftop.png) no-repeat right top; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.gk_vm_product_block DIV DIV DIV {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(../images/box-deftopleft.png) no-repeat left top; MARGIN-BOTTOM: -6px; PADDING-BOTTOM: 0px; PADDING-TOP: 6px
+}
+DIV.gk_vm_product_block SPAN {
+	FONT: 11px Tahoma, Arial, Helvetica, sans-serif; TEXT-TRANSFORM: uppercase; TEXT-ALIGN: center
+}
+DIV.gk_vm_product_block DIV DIV DIV IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 10px -1px 15px 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}

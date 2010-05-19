@@ -1,0 +1,1 @@
+<li><span>21</span><sup>o</sup> Hà Nội</li><li><span>31</span><sup>o</sup> Hồ Chí Minh</li><li><span>22</span><sup>o</sup> Hải Phòng</li><li><span>29</span><sup>o</sup> Đà nẵng</li>

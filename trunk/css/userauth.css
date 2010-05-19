@@ -1,0 +1,76 @@
+th {
+	border: 1px solid #1F4983;
+}
+/* tomcode change */
+table.stripe {
+	border-collapse: collapse;
+	width: 99%;
+	margin-bottom: 15px;
+}
+th {
+	background: #1F4983;
+	color: #FFF;
+	text-align:center;
+}
+
+table.stripe td{
+	padding:3px;
+}
+.stripe tr.ruled td{
+	background: #EAEAFF; 
+}
+#addUser, #edituser, #addGroup, #editgroup {
+	border: 1px solid #DDDDDD;
+	width: 738px;
+	padding: 10px;
+}
+#users_table td, #group_table td, #ap_table td, #permissions td {
+	border: 1px solid #1F4983;
+}
+/* tomcode change */
+#addUser input, #edituser input, #addGroup input, #editgroup input {
+	display:block;
+}
+
+.addButton {
+	margin: 10px;
+	padding: 4px;
+	border: 1px solid #6262FF;
+	background: #EAEAFF;
+	display: block;
+	width: 150px; 
+	text-align: center;
+}
+.edit {
+	white-space: nowrap;
+	width: 30px;
+	text-align:center;
+}
+
+.delete {
+	white-space: nowrap;
+	width: 30px;
+	text-align:center;
+}
+
+#content h3 {
+	background: #699DC8;
+	color: #FFF;
+	line-height: 40px;
+	padding-left: 25px;
+	font-weight: bold;
+	margin-right: 4px; /* fix to even things out for IE which STILL doesn't do box model properly */
+}
+#content h3 a {
+	text-decoration: none;
+	color: #FFF!important;
+	display: block;
+}
+#control_area p {
+	margin: auto;
+}
+
+.error {
+	font-weight: bold;
+	color: #C00;
+}
