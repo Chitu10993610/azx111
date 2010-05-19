@@ -428,7 +428,7 @@ class Upload_video extends Controller {
 		
 		$config['upload_path'] = IMG_VIDEO_PATH;
         $config['allowed_types'] = 'flv';
-		$config['max_size']	= '30000';
+		$config['max_size']	= '32768';
 		$this->upload->initialize($config);
 		
 		//upload property files are attached
