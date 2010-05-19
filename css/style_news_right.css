@@ -1,0 +1,73 @@
+.imgvip1 {
+border:1px solid #CCCCCC;
+float:left;
+padding:1px;
+width:80px;
+height:65px;
+}
+.imgvip {
+border:1px solid #CCCCCC;
+float:left;
+padding:1px;
+width:53px;
+height:53px;
+}
+.forumhang1a {
+float:left;
+margin-left:3px;
+height:68px;
+width:138px;
+}
+.forumhang1a-title {
+float:left;
+height:54px;
+margin-left:5px;
+overflow:hidden;
+text-align:left;
+width:65px;
+}
+.forumhang1a-text-link  {
+color:#000000;
+font-size:11px;
+text-decoration:none;
+}
+.phai02-trai-02-botren  {
+background:url("../images/phunu/botren.gif") no-repeat scroll 0 0 transparent;
+height:6px;
+width:290px;
+}
+.phai02-trai-04-content  {
+border-left:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+width:288px;
+}
+.tin2cot {
+border-top:1px solid #E4E4E4;
+padding-top:5px;
+width:288px;
+}
+.dong1-text-link {
+color:#000;
+font-size:11px;
+font-weight:bold;
+text-decoration:none;
+}
+.phai02-trai-02-content-dong1-img  {
+float:left;
+height:62px;
+margin-left:5px;
+margin-top:10px;
+width:82px;
+}
+.phai02-trai-02-content-dong1  {
+border:1px solid #FFFFFF;
+height:82px;
+width:280px;
+}
+.phai02-trai-02-content-dong1-text  {
+height:62px;
+margin-left:95px;
+margin-top:10px;
+text-align:left;
+width:180px;
+}

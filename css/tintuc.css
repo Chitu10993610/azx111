@@ -1,0 +1,131 @@
+/* CSS Document */
+.body2{
+ width:571px;
+ height:1219px;
+ float:left;
+ margin-left:1px;
+}
+.anhnoidung{
+ margin-top:-5px; 
+ margin-left:12px;
+}
+.textnoidung1{
+ font-size:14px; 
+ margin-top:0px;
+}
+.textnoidung2{
+ font-size:14px; 
+ margin-top:-10px;
+}
+.anhquyensach{
+ width:114px; 
+ height:89px;
+ float:left;
+}
+.tieude{
+  height:24px; 
+  background:#CCCCCC; 
+  border:solid #CCCCCC 1px; 
+  font-weight:bold;
+}
+.khungtext{
+ height:25px;
+}
+.khungtext1{
+ margin-top:2PX; 
+ font-weight:bold;
+}
+.divnoidung{
+ width:569px;
+ height:24px; 
+ background:#f1f1f1; 
+ margin-top:10px;
+}
+.denghi{
+ width:180px; 
+ font-size:14px; 
+ font-weight:bold; 
+ height:20px;
+ float:left;
+}
+.divchung{
+ width:370px; 
+ height:20px;
+ float:left;
+}
+.Denghi{
+ width:180px; 
+ font-size:14px; 
+ font-weight:bold; 
+ height:20px;
+ float:left;
+}
+.khung{
+ width:370px; 
+ height:20px;
+ float:left;
+}
+.on{
+ width:50px; 
+ float:left; 
+ font-weight:bold;
+}
+.off{
+ width:50px; 
+ float:left; 
+ font-weight:bold; 
+}
+.Telex{
+ width:60px; 
+ float:left; 
+ font-weight:bold;
+}
+.viqr{
+ width:70px; float:left; font-weight:bold; 
+}
+.vni{
+ width:60px; float:left; font-weight:bold;
+}
+.body2div1{
+ height:900px; 
+ border:solid #CCCCCC 1px;
+ border-top:none;
+ border-left:none;
+ border-right:none;
+}
+.thuhai{
+ margin-left:350px; 
+ color:#8e8e8e; 
+ font-weight:bold;
+}
+.tintuc{
+ line-height:0px; 
+ color:#830c0e; 
+ font-weight:bold; 
+ margin-top:-10px;
+}
+.motminh{
+ font-size:14px;
+ font-weight:bold;
+}
+.thu{
+ width:200px; 
+ height:20px;
+ float:right; 
+ margin-top:-50px; 
+ margin-left:100px;
+}
+.homthu{
+ float:left;
+}
+.anh{
+ border:none; 
+ float:left; 
+ margin-left:5px;
+}
+.body3{
+ width:170px;
+ height:2075px;
+ float:left;
+ margin-left:4px;
+}

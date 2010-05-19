@@ -1,0 +1,529 @@
+/*Begin style news*/
+.noidung {
+margin-top:3px;
+}
+.noidung-trai {
+float:left;
+overflow:hidden;
+width:520px;
+}
+.noidung-phai {
+float:right;
+width:502px;
+}
+.noidung-trai-01 {
+padding:3px;
+}
+.phai02-trai {
+float:left;
+width:300px;
+}
+.phai02-phai{
+float:right;
+width:200px;
+
+}
+.block_content_detail  {
+border-left:1px solid #DDDDDD;
+border-right:1px solid #DDDDDD;
+padding:10px 1px 0;
+position:relative;
+}
+.nBlock {
+background:none repeat scroll 0 0 #FFFFFF;
+font-weight:400;
+margin-bottom:5px;
+}
+.backmodtrai-giua {
+background:url("../images/phunu/giua.gif") repeat-x scroll 0 0 transparent;
+height:23px;
+}
+.backmodtrai-trai {
+background:url("../images/phunu/trai.gif") no-repeat scroll left center transparent;
+height:23px;
+}
+.backmodtrai-phai {
+background:url("../images/phunu/phai.gif") no-repeat scroll right center transparent;
+color:#FFFFFF;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:11px;
+font-weight:700;
+height:23px;
+text-align:center;
+}
+.phai02-trai-02-boduoi  {
+background:url("../images/phunu/boduoi22.gif") no-repeat scroll 0 0 transparent;
+height:6px;
+}
+.baiviet-img {
+border:1px solid #CCCCCC;
+float:left;
+height:100px;
+margin-left:3px;
+overflow-y:hidden;
+padding:1px;
+width:126px;
+}
+
+
+.noidung-trai-01-titlemodule  {
+background:url("../images/phunu/backcap2.gif") no-repeat scroll 0 0 transparent;
+color:#FFFFFF;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:12px;
+font-weight:bold;
+height:19px;
+margin-top:2px;
+padding-left:10px;
+text-align:left;
+}
+
+.detail_cat_print  {
+background:url("../images/phunu/logo.png") no-repeat scroll 0 0 transparent;
+border-bottom:1px solid #CCCCCC;
+height:65px;
+text-align:left;
+}
+.noidung-trai-01-titlemodule-text  {
+padding-top:2px;
+}
+.noidung-trai-01-content  {
+border-left:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+}
+.boduoicap2 {
+background:url("../images/phunu/bocap2duoi.gif") no-repeat scroll 0 0 transparent;
+height:8px;
+}
+.noidung-trai-01-content-img  {
+float:left;
+height:186px;
+margin-left:6px;
+margin-top:3px;
+width:218px;
+overflow:hidden;
+}
+.noidung-trai-01-content-content  {
+float:left;
+height:186px;
+margin:3px 0 0 5px;
+width:275px;
+}
+.noidung-trai-02cap2  {
+border-left:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+border-top:1px solid #CCCCCC;
+width:512px;
+}
+a.title-cap2-link {
+color:#01458E;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:16px;
+font-weight:bold;
+text-decoration:none;
+}
+a.title-cap2-link:hover {
+color:#0099CC;
+}
+.tacgia-cap2 {
+color:#8E0732;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:10px;
+height:20px;
+margin-top:2px;
+text-align:left;
+text-decoration:none;
+}
+.noidung-cap2 {
+color:#000000;
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+text-align:left;
+width:266px;
+}
+.xemtiep-cap2 {
+float:right;
+height:13px;
+margin-right:4px;
+width:80px;
+}
+a.xemtiep-cap2-link {
+color:#AC1212;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:10px;
+text-decoration:none;
+}
+a.xemtiep-cap2-link:hover {
+color:#CCCCCC;
+}
+a.noidungcap2-01-title-link  {
+color:#01458E;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:12px;
+font-weight:bold;
+text-decoration:none;
+}
+a.noidungcap2-01-title-link:hover {
+color:#0099CC;
+}
+.noidungcap2-01-content-img  {
+float:left;
+margin-left:6px;
+width:134px;
+}
+.noidungcap2-01-content-ct  {
+float:right;
+height:104px;
+width:360px;
+}
+.noidungcap2-01-content-ct-tacgia  {
+color:#670F25;
+float:left;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:10px;
+height:12px;
+text-align:left;
+}
+.noidungcap2-01-content-ct-text  {
+color:#000000;
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+height:82px;
+margin-top:16px;
+text-align:left;
+width:352px;
+}
+.xemtiep-cap2-link {
+color:#AC1212;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:10px;
+text-decoration:none;
+}
+.noidungcap2-01 {
+border-bottom:1px solid #CCCCCC;
+}
+.noidungcap2-01-title  {
+height:20px;
+margin-left:10px;
+margin-top:4px;
+text-align:left;
+width:500px;
+}
+.cactindadua {
+height:30px;
+margin-top:30px;
+width:470px;
+}
+.date {
+color:#000000;
+float:left;
+font-family:tahoma;
+font-size:12px;
+font-weight:bold;
+text-decoration:underline;
+}
+.box {
+float:right;
+height:30px;
+width:250px;
+}
+.cap3-title {
+height:20px;
+padding:5px;
+text-align:left;
+}
+.cap3-date {
+color:#BE0314;
+float:left;
+font-size:11px;
+height:20px;
+margin-left:10px;
+width:500px;
+}
+.cap3-content {
+font-family:tahoma;
+font-size:12px;
+padding:8px;
+text-align:justify;
+}
+.cap3-title-link {
+color:#000000;
+font-size:12px;
+font-weight:bold;
+}
+.quaylai {
+height:20px;
+margin-left:400px;
+margin-top:4px;
+width:60px;
+}
+a.quaylai-link {
+color:#FF0000;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:11px;
+text-decoration:none;
+}
+a.quaylai-link:hover {
+color:#CCC;
+}
+.tin1 {
+height:24px;
+width:480px;
+}
+.news_other li {
+background:url("../images/phunu/icon-cap2.gif") no-repeat scroll left center transparent;
+height:18px;
+padding:3px 18px 0;
+white-space:nowrap;
+}
+.tin1-text {
+float:left;
+height:22px;
+margin-top:2px;
+}
+.tin1-date {
+color:#0989A6;
+font-size:11px;
+margin-left:10px;
+margin-top:4px;
+}
+/*begin comment*/
+.so {
+color:#FF0000;
+font-size:11px;
+font-weight:bold;
+height:17px;
+padding-top:2px;
+width:62px;
+text-align:center;
+}
+.calender {
+background:url("../images/phunu/cap3_back.gif");
+height:38px;
+margin-left:400px;
+margin-top:14px;
+width:65px;
+}
+.tinhay {
+color:#FFFFFF;
+font-size:11px;
+height:17px;
+width:62px;
+text-align:center;
+}
+.neo-emailprintback {
+background:url("../images/bg_print.png") no-repeat scroll right top transparent;
+height:31px;
+line-height:28px;
+margin-top:6px;
+text-align:right;
+}
+.dt-print {
+background:url("../images/icons/icon_print.gif") no-repeat scroll left center transparent;
+padding:3px 0 3px 24px;
+}
+.neo-emailprintback ul {
+display:inline;
+list-style-type:none;
+margin:0;
+padding:0;
+}
+.neo-emailprintback ul li {
+float:left;
+}
+.neo-emailprintback a {
+color:#999999;
+margin-right:15px;
+}
+.dt-respond {
+background:url("../images/icons/i_feedback.gif") no-repeat scroll left center transparent;
+padding:3px 0 3px 33px;
+}
+.view-respond {
+background:url("../images/icons/i_view_fb.ifg") no-repeat scroll left center transparent;
+padding:0 0 0 20px;
+}
+.guibl {
+background:url("../images/phunu/backcap322.gif") no-repeat scroll 0 0 transparent;
+height:30px;
+margin-top:4px;
+width:471px;
+}
+.guibl-title {
+color:#000000;
+float:left;
+font-size:16px;
+font-weight:bold;
+height:30px;
+margin-top:4px;
+width:248px;
+padding-left:33px;
+}
+.guiykien1 {
+color:#FF0000;
+float:left;
+font-size:14px;
+font-weight:bold;
+height:20px;
+margin-top:4px;
+padding-left:28px;
+}
+.guiykien {
+height:28px;
+width:455px;
+}
+.guiykien2 {
+font-size:12px;
+font-weight:normal;
+}
+.hoten {
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+height:28px;
+margin-top:4px;
+text-align:left;
+width:450px;
+}
+.noidung-box {
+height:108px;
+width:450px;
+}
+.anh {
+color:#FF0000;
+float:left;
+font-weight:normal;
+height:24px;
+width:126px
+}
+.hoten-text {
+float:left;
+height:24px;
+width:110px;
+font-weight:bold;
+}
+.mxn-box {
+float:left;
+height:24px;
+width:152px;
+}
+.hoten-box {
+float:left;
+height:24px;
+width:300px;
+}
+.sao {
+color:#FF0000;
+float:right;
+font-weight:normal;
+height:24px;
+width:20px;
+}
+.nd-box {
+float:left;
+width:300px;
+}
+.sendcomment .row {
+padding-top:7px;
+width:460px;
+}
+.row {
+display:block;
+}
+.sendcomment .rowbutton {
+padding-left:23px;
+}
+.sendcomment input.send_button {
+background-image:url("../images/icons/send_comment.jpg");
+border:0 none;
+cursor:pointer;
+height:18px;
+overflow:hidden;
+width:87px;
+}
+.sendcomment input.cancel_button {
+background-image:url("../images/icons/cancel_comment.jpg");
+border:0 none;
+cursor:pointer;
+height:18px;
+overflow:hidden;
+width:87px;
+}
+
+.comment {
+overflow:hidden;
+width:470px;
+margin:10px auto;
+}
+.comment .item {
+float:left;
+padding-top:3px;
+width:438px;
+}
+.comment .header {
+background-image:url("../images/phunu/commment_icon.jpg");
+background-position:0 0;
+height:30px;
+width:470px;
+}
+.comment .item .top {
+background-image:url("../images/phunu/commment_icon.jpg");
+background-position:0 -30px;
+height:7px;
+width:438px;
+}
+.comment .item .middle {
+border-bottom:1px solid #CCCCCC;
+border-left:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+float:left;
+width:436px;
+}
+.comment .item .middle .name {
+float:left;
+padding-left:10px;
+padding-top:6px;
+width:426px;
+}
+.comment .item .middle .name .icon {
+background-image:url("../images/phunu/commment_icon.jpg");
+background-position:0 -60px;
+float:left;
+height:16px;
+width:16px;
+}
+.comment .item .middle .name .text {
+color:#E20A17;
+float:left;
+font-family:Arial;
+font-size:11px;
+font-weight:bold;
+padding-left:7px;
+padding-top:4px;
+}
+.comment .item .middle .name .date {
+color:#999999;
+float:left;
+font-family:Arial;
+font-size:11px;
+padding-left:3px;
+padding-top:4px;
+font-weight:normal;
+}
+.comment .item .middle .email {
+color:#999999;
+float:left;
+font-family:Arial;
+font-size:11px;
+padding-left:10px;
+width:426px;
+}
+.comment .item .middle .content {
+color:#666666;
+float:left;
+font-family:Arial;
+font-size:12px;
+padding:8px 10px;
+width:416px;
+}
+/*end comment*/
+/*End style news*/
