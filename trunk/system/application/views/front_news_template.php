@@ -101,10 +101,14 @@ $menuname   = $aryMenu["name"];
         </ul>
 
        </div>
+       <div id="vietbai">
+			<a class="menu_2_a" href="<?=site_url()?>front/register">Đăng ký</a> | 
+			<a class="menu_2_a" href="<?=site_url()?>news/add">Viết bài</a>
+		</div>
        			<div class="seo">
 				<div class="raovat"><a target="_blank" href="http://tapchithuongmai.net" class="menu_2_a" ><img src="<?=site_url()?>images/raovattd.gif"></a></div>
 				<form name="search" action="<?=base_url()?>front/search" method="POST"> 	
-				<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" style="border:1px #CCCCCC solid; width:200px; height:13px; margin-top:1px;"/></div> 
+				<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" id="keyword" /></div> 
 				<div class="seo_button" ><input type="image" src="<?=site_url()?>images/timkiem.gif"></div>
 				</form>
 			</div>

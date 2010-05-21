@@ -127,7 +127,7 @@ $this->lang->load('userauth', $this->session->userdata('ua_language'));
 	    </ul>
 	    <div class="bottom_btn">
 		    <div class="btn_cover"><input type="submit" value="Đăng ký" class="tnpp_button_login" name="register" /></div>
-			Khi bạn nhấn vào nút "Đăng ký", bạn đã đồng ý và chấp nhận các điều khoản <a class="blue_12_txt" href="<?=site_url()?>front/dieukhoan" target="_blank">Thỏa thuận sử dụng</a> của <a class="red_txt" href="<?=site_url()?>front/dieukhoan">Nhà như ý</a></div>
+			<!-- Khi bạn nhấn vào nút "Đăng ký", bạn đã đồng ý và chấp nhận các điều khoản <a class="blue_12_txt" href="<?=site_url()?>front/dieukhoan" target="_blank">Thỏa thuận sử dụng</a> của <a class="red_txt" href="<?=site_url()?>front/dieukhoan">Ban quản trị</a>--></div>
 	    <div id="alert_box" class="alert_box" style="top: 108px; display: none;">
 		    <p class="mar_top_10">Nếu username mà bạn chọn đã được sử dụng bởi thành viên khác, xin bạn vui lòng thử bằng cách thêm từ hoặc số sao cho username đó là duy nhất.</p>
         </div>
@@ -140,7 +140,7 @@ $this->lang->load('userauth', $this->session->userdata('ua_language'));
         </div>
 	    <div id="alert_email" class="alert_box" style="display: none;">
 	      <p><span class="red"></span></p>
-		    <p class="mar_top_10">Nếu bạn không cung cấp một địa chỉ email chính xác, Nhà như ý có thể không xác minh được nhận dạng của bạn và sẽ không thể liên hệ với bạn hoặc giúp bạn nếu có vấn đề với tài khoản của bạn.</p>
+		    <p class="mar_top_10">Nếu bạn không cung cấp một địa chỉ email chính xác, Ban quản trị có thể không xác minh được nhận dạng của bạn và sẽ không thể liên hệ với bạn hoặc giúp bạn nếu có vấn đề với tài khoản của bạn.</p>
         </div>
   
 	    <div id="alert_security" class="alert_box" style="display: none;"><p>Bằng việc nhập mã xác nhận, bạn đã giúp chúng tôi tránh được hiện tượng spam dữ liệu.</p>

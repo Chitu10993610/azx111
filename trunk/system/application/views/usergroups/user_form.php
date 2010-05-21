@@ -89,7 +89,7 @@ $this->lang->load('userauth', $this->session->userdata('ua_language'));
 			<textarea cols="30" rows="6" name="information" id="information" size="30" /><?=$information?></textarea>
 		</td>
 		</tr>
-		<?php if(!isset($myInfo)) {?>
+		<?php if(false && !isset($myInfo)) {?>
 		<tr><td colspan="2">
 			<b>Phân quyền theo chuyên mục</b>
 		</td>

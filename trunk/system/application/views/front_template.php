@@ -109,10 +109,14 @@ $menuname   = $aryMenu["name"];
         </ul>
 
        </div>
+       <div id="vietbai">
+			<a class="menu_2_a" href="<?=site_url()?>front/register">Đăng ký</a> | 
+			<a class="menu_2_a" href="<?=site_url()?>news/add">Viết bài</a>
+		</div>
        			<div class="seo">
 				<div class="raovat"><a target="_blank" href="http://tapchithuongmai.net" class="menu_2_a" style=""><img src="<?=site_url()?>images/raovattd.gif"></a></div>
 				<form name="search" action="<?=base_url()?>front/search" method="POST"> 	
-				<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" style="border:1px #CCCCCC solid; width:200px; height:13px; margin-top:2px;"/></div> 
+				<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" id="keyword"/></div> 
 				<div class="seo_button" ><input type="image" src="<?=site_url()?>images/timkiem.gif"></div>
 				</form>
 			</div>
@@ -203,6 +207,14 @@ $menuname   = $aryMenu["name"];
       <?php $this->load->view("footer");?>
   </div>
   <!--END FOOTER -->
+  <div style="position: absolute; z-index: 1000; left: -240px; top: 543px;" id="LoadingDiv">
+<table cellspacing="1" cellpadding="3" width="160" style="background-color: rgb(102, 102, 102);">
+<tbody><tr>
+	<td bgcolor="#ffffff" align="center"><img border="0" src="<?=site_url()?>images/loading.gif"/><br/>
+	Đang Tải Dữ Liệu....<br/>Nhấn <font color="red"><b>F5</b></font> nếu chờ quá lâu</td>
+</tr>
+</tbody></table>
+</div>
   <div style="clear:both;"></div>
 </div>
 </div>

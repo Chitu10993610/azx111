@@ -76,7 +76,7 @@ function sconfirm(strMess,strURL){
 <!--  Begin primary menu -->
 <div id="menu">
 	<ul>
-		<li class="selected"><a href="<?=site_url()?>">Trang Chủ</a></li>
+		<li class="selected"><a target="_blank" href="<?=site_url()?>">Trang Chủ</a></li>
 <!--		<li class=""><a href="<?=site_url()?>gioi-thieu">Giới thiệu</a></li>-->
 <!--		<li class=""><a href="<?=site_url()?>front/dichvu">Dịch vụ BĐS</a></li>-->
 <!--		<li class=""><a href="<?=site_url()?>tin-tuc">Tin BĐS</a></li>-->

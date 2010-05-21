@@ -147,12 +147,13 @@ function _return(img) {
 												}
 												?></td>
 					</tr>
+					<?php
+					if(access(PUBLISH_NEWS)) {?>
 					<tr>
 						<td align="left" width="120" nowrap style="padding-left: 20px"><b>Cho phép đăng:</b></td>
 						<td style="padding-right: 20px"><input type="radio" value="1" <?php if($aryNewsInfo['news_status'] == "1" || $aryNewsInfo['news_status'] == '') echo "checked" ?> name="news_status">Có&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="news_status" value="0" <?php if($aryNewsInfo['news_status'] == "0") echo "checked" ?>>Không</td>
 					</tr>
-					<?}?>
 					<tr>
 						<td align="left" width="120" style="padding-left: 20px"><b>Hiển thị tin ngoài trang chủ:</b></td>
 						<td><input type="radio" value="1" name="show_home" <?php if($aryNewsInfo['show_home'] == "1" ||$aryNewsInfo['show_home'] == '') echo "checked" ?>>Có&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -163,6 +164,8 @@ function _return(img) {
 						<td><input type="radio" value="1" name="is_tieudiem" <?php if($aryNewsInfo['is_tieudiem'] == "1" || $aryNewsInfo['is_tieudiem'] == '') echo "checked" ?>>Có&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="is_tieudiem" value="0" <?php if($aryNewsInfo['is_tieudiem'] == "0") echo "checked" ?>>Không</td>
 					</tr>
+					<?}?>
+					<?}?>
 					<tr>
 						<td align="center" colspan="2" style="padding-top: 8px; padding-bottom: 8px; border-bottom-style:solid; border-bottom-width:1px">
 						<input type="submit" value="Cập nhật" name="Submit" class="button">
