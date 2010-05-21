@@ -60,7 +60,7 @@ $action_url = site_url() .$site_name. "/properties/$action/";
 <input type='hidden' name='id' id='id' value='<?= $id; ?>' >
 <?php echo validation_errors(); ?>
 <?php if(isset($error)) echo $error;?>
-<table width="685" border="0" cellpadding="5" cellspacing="5">
+<table width="733" border="0" cellpadding="5" cellspacing="5">
   <tr>
     <td width="163"><label for="name">Tiêu đề tin</label> </td>
     <td width="502"><input style="width:480px;" name="name" type="text" id="name" value="<?= $name; ?>" maxlength="255" /></td>
@@ -117,6 +117,8 @@ $action_url = site_url() .$site_name. "/properties/$action/";
     <input type='radio' name='type' value="2" <?php if ($type == 2) echo "checked";?> /> Cần Mua&nbsp;&nbsp;&nbsp;
     <input type='radio' name='type' value="3" <?php if ($type == 3) echo "checked";?> /> Cần Thuê    </td>
   </tr>
+    <?php
+	if(access(PUBLISH_NEWS)) {?>
   <tr>
     <td>Tin vip</td>
     <td>
@@ -129,6 +131,15 @@ $action_url = site_url() .$site_name. "/properties/$action/";
     <input type='radio' name='is_hot'  value="0" <?php if (empty($is_hot)) echo 'checked="checked"';?> /> Không&nbsp;&nbsp;&nbsp;
     <input type='radio' name='is_hot' value="1" <?php if ($is_hot == 1) echo "checked";?> /> Là giao dịch hot    </td>
   </tr>
+  <tr>
+  </tr>
+    <tr>
+    <td>Cho phép đăng</td>
+    <td>
+    <input type='radio' name='status'  value="0" <?php if (empty($status)) echo 'checked="checked"';?> /> Không&nbsp;&nbsp;&nbsp;
+    <input type='radio' name='status' value="1" <?php if ($status == 1) echo "checked";?> /> Có</td>
+  </tr>
+  <?}?>
   <tr>
     <td>Ngày hết hạn tin</td>
     <td><div id="div_range" style="padding:5px 5px 5px 0px;">
