@@ -461,4 +461,15 @@ width:167px;
 height:144px;
 margin-right:3px;
 }
+a.lnkGray {
+color:#CCC;
+}
+.paging {
+float:left;
+padding:15px;
+}
+.paging a {
+border:1px solid #CCC;
+padding:3px 5px;
+}
 /* Miscellaneous End */

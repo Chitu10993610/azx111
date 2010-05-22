@@ -44,7 +44,7 @@ class Ads extends Controller {
    */
 
    function index() {
-   	$this->user_group_model->can_access('View list Ads', null, null);
+   	
       // The default action is the showall action
       $this->browse();
    }
@@ -56,7 +56,7 @@ class Ads extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
-   	
+   		$this->user_group_model->can_access(VIEW_LIST_PROMO, null, null);
       $start = $this->uri->segment(3,0);
       $limit_per_page = 20;
       $site_id = $this->session->userdata('site_id');
@@ -90,7 +90,7 @@ class Ads extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function add() {
-		$this->user_group_model->can_access('Add new Ads', null, null);
+		$this->user_group_model->can_access(ADD_PROMO, null, null);
       $this->load->helper('url');
       $error = '';
 
@@ -170,7 +170,7 @@ class Ads extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
-	$this->user_group_model->can_access('Edit Ads', null, null);
+	$this->user_group_model->can_access(EDIT_PROMO, null, null);
       $this->load->helper('url');
       $error = '';
 
@@ -247,7 +247,7 @@ class Ads extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function delete() {
-   		$this->user_group_model->can_access('Delete Ads', null, null);
+   		$this->user_group_model->can_access(DELETE_PROMO, null, null);
       $idField = $this->uri->segment(3);
 
       $this->load->model('ci_adsmodel');

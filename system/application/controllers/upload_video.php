@@ -256,7 +256,7 @@ class Upload_video extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function delete() {
-   		$this->user_group_model->can_access('Delete Video', null, null);
+   		$this->user_group_model->can_access(DELETE_VIDEO, null, null);
 		$videoid = $this->input->post('cid');
 		$aryVideoId = $this->input->post('chkid');
 		

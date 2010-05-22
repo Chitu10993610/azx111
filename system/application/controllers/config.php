@@ -58,7 +58,7 @@ class Config extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
    	
-   	$this->user_group_model->can_access('Config site', null, null, $this->site_name);
+   	$this->user_group_model->can_access(CONFIG, null, null, $this->site_name);
       $this->load->helper('url');
       $error = '';
       // ///////////////////////////////////////////////////////////////////////

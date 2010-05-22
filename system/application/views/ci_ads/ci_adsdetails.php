@@ -39,14 +39,14 @@ $action_url = site_url()."ads/$action/";
 			<td align="left" width="120" nowrap style="padding-left: 20px; padding-top:10px"><b>Hiển thị trong các mục tin:</b></td>
 			<td style="padding-left: 5px;" align="left">
 			<select name="view_rule[]" style="width:200px;" size="10" multiple>
-			<?php $selected=(strpos($view_rule, ":home:") !== false) ? "selected":"";?>
-			<?php $selected=(strpos($view_rule, ":search:") !== false) ? "selected":"";?>
-			 <option value=":home:" <?=$selected?>> -- Trang chủ -- </option>
-			 <option value=":search:" <?=$selected?>> -- Kết quả tìm kiếm -- </option>
+			<?php $selected1=(strpos($view_rule, ":home:") !== false) ? "selected":"";?>
+			<?php $selected2=(strpos($view_rule, ":search:") !== false) ? "selected":"";?>
+			 <option value=":home:" <?=$selected1?>> -- Trang chủ -- </option>
+			 <option value=":search:" <?=$selected2?>> -- Kết quả tìm kiếm -- </option>
 		<?php
 			foreach ($aryCatList as $aryCat) {
-				$selected=(strpos($view_rule, ':'.$aryCat['cat_id'].':') !== false) ? "selected":"";
-				echo '<option value="' . ':'.$aryCat['cat_id'] .':'. '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';
+				$selected=(strpos($view_rule, ':'.$aryCat['cat_id']) !== false) ? "selected":"";
+				echo '<option value="' . ':'.$aryCat['cat_id'] . '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';
 			}
 		?>
 			</select>
@@ -57,13 +57,10 @@ $action_url = site_url()."ads/$action/";
 			<td align="left" width="120" nowrap style="padding-left: 20px; padding-top:10px"><b>Hiển thị ở mục tin rao</b></td>
 			<td style="padding-left: 5px;" align="left">
 			<select name="view_rule[]" style="width:200px;" size="10" multiple>
-			<?php $selected=(strpos($view_rule, ":home:") !== false) ? "selected":"";?>
-			 <option value=":home:" <?=$selected?>> -- Rao vặt -- </option>
-
 		<?php
 			foreach ($aryCatList1 as $aryCat) {
-				$selected=(strpos($view_rule, ':'.$aryCat['cat_id'].':') !== false) ? "selected":"";
-				echo '<option value="' . ':'.$aryCat['cat_id'] .':'. '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';
+				$selected=(strpos($view_rule, 'r'.$aryCat['cat_id']) !== false) ? "selected":"";
+				echo '<option value="' . 'r'.$aryCat['cat_id']. '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';
 			}
 		?>
 			</select>

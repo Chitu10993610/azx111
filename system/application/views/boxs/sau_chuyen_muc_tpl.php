@@ -1,5 +1,5 @@
 <?php foreach ($aryNewsList as $aryNews) { ?>							
-<div style="margin:8px 0"><a href="front/tin_tuc/<?=$cat_id?>" class="box2_1_head"><?=$box_title['cat_name']?></a></div>
+<div style="margin:8px 0"><a href="tin-tuc/<?=$cat_id?>" class="box2_1_head"><?=$box_title['cat_name']?></a></div>
 <div style="text-align:justify">
    <?php $thumb = ($aryNews["news_image"]) ? $this->front_lib->get_thumb($aryNews["news_image"]) : '';?>
 <div style="background: url('images/news/<?=$thumb?>') no-repeat scroll center center transparent;" class="img_vip_100_70">

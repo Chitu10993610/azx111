@@ -49,10 +49,7 @@
     }?></td>
 				<td style="text-align:left;"><?=$ci_properties['name']?></td>
 				<td><?=$ci_properties['province_name']?></td>
-				<td><?=$ci_properties['price']?> <?=$ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></td>
-
-
-				<!--<td><?=$ci_properties['distance']?></td>-->
+				<td><?=price_format($ci_properties['price'])?> <?=$ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></td>
 				<td class="edit">
 				<a href = "<?= $modify_url."/".$ci_properties["id"]; ?>" ><?=img('images/i_edit.gif')?></a>
 					</td>
@@ -68,6 +65,6 @@
 		<div style="float:right;"><?= anchor ($site_name.'properties/add', 
 			'Đăng Tin', array('class' => 'addButton'));?></div>
 		</div>
-		<div style="float:left;"><?=$page_links?></div>
+		<div style="float:left;" class="paging" ><?=$page_links?></div>
 	</div>
 </div>

@@ -303,6 +303,7 @@ var $news_url;
 			
 		$sql = "INSERT INTO ".$this->prefix."news(
 							poster, 
+							poster_name, 
 							news_status, 
 							news_image_align, 
 							news_image_border, 
@@ -316,7 +317,8 @@ var $news_url;
 							news_type, 
 							cat_id) 
 					VALUES(
-							1, 
+							" . $aryNewsInfo['poster'] . ", 
+							'" . $aryNewsInfo['poster_name'] . "', 
 							" . (int)$aryNewsInfo['news_status'] . ", 
 							" . (int)$aryNewsInfo['news_image_align'] . ", 
 							" . (int)$aryNewsInfo['news_image_border'] . ", 
@@ -410,7 +412,9 @@ var $news_url;
 						news_image_width = '" . (int)$aryNewsInfo['news_image_width'] . "', 
 						news_image_higth = '" . (int)$aryNewsInfo['news_image_higth'] . "', 
 						show_home = '" . (int)$aryNewsInfo['show_home'] . "', 
-						is_tieudiem = '" . (int)$aryNewsInfo['is_tieudiem'] . "', 
+						is_tieudiem = '" . (int)$aryNewsInfo['is_tieudiem'] . "',
+						update_user = '" . $aryNewsInfo['update_user'] . "', 
+						update_name = '" . $aryNewsInfo['update_name'] . "',
 						update_date = ". time() . ",   
 						cat_id =  '" . $aryNewsInfo['cat_id'] . "'  
 				WHERE news_id = ". $newsId;   

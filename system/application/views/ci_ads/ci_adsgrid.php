@@ -49,7 +49,7 @@
 			</tr>
 			<? } ?>
 		</table>
-		<div style="float:left;"><?=$page_links?></div>			
+		<div class="paging" style="float:left;"><?=$page_links?></div>			
 		<div style="float:right;"><?= anchor ($add_url, 'Add Ads', array('class' => 'addButton'));?></div>
 		</div>
 </div>

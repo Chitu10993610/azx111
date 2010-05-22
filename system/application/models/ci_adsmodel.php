@@ -102,6 +102,7 @@ var $position;
 
       // Build up the SQL query string and run the query
       $sql = 'SELECT * FROM '.$this->db->dbprefix('ads'). ' '.$where_clause . ' ORDER BY ads_order '.$limit_clause;
+//      echo $sql."<br />";
       $query = $this->db->query($sql);
 
       if ($query->num_rows() > 0) {

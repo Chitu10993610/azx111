@@ -59,10 +59,11 @@ function checkFrmLoaiHang()
 				<select name="parent_id" style="width:200px;">
 				 <option value="0">----------Chọn danh mục cha----------</option>
 			<?php 
-			
 				foreach ($aryCatList as $aryCat) {
-					$selected = ($aryCatInfo['parent_id'] == $aryCat['cat_id']) ? " selected" : "";
-					echo '<option value="' . $aryCat['cat_id'] . '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';				
+					if($aryCatInfo['cat_id'] != $aryCat['cat_id']) {
+						$selected = ($aryCatInfo['parent_id'] == $aryCat['cat_id']) ? " selected" : "";
+						echo '<option value="' . $aryCat['cat_id'] . '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';				
+					}
 				}
 			?>
 				</select></td>

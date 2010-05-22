@@ -30,8 +30,7 @@ function checkFrmLoaiHang()
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F0EFE3">
 	<tr>
 		<td bgcolor="#004E9B" height="21">
-		<font color="#FFFFFF"><b>&nbsp; Thêm nhóm, 
-		mục menu mới</b></font></td>
+		<font color="#FFFFFF"><b>&nbsp; Thêm nhóm, mục mới</b></font></td>
 	</tr>
 	<tr>
 		<td valign="top" align="center" style="padding-top: 10px; padding-bottom: 10px">
@@ -41,8 +40,7 @@ function checkFrmLoaiHang()
                                 <tr> 
                                   <td colspan="2" valign="middle">
 				<p align="center"><b>
-				<font face="Arial" color="#000099">Thêm 
-				mục con của menu trái</font></b></td>
+				<font face="Arial" color="#000099"></font></b></td>
                                         </tr>
 
 				<tr>		
@@ -61,8 +59,11 @@ function checkFrmLoaiHang()
 			<?php 
 			
 				foreach ($aryCatList as $aryCat) {
-					$selected = ($aryCatInfo['parent_id'] == $aryCat['cat_id']) ? " selected" : "";
-					echo '<option value="' . $aryCat['cat_id'] . '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';				
+					if($aryCatInfo['cat_id'] != $aryCat['cat_id']) {
+						$selected = ($aryCatInfo['parent_id'] == $aryCat['cat_id']) ? " selected" : "";
+						echo '<option value="' . $aryCat['cat_id'] . '"'. $selected . '>' . str_repeat('&nbsp;&nbsp;', $aryCat['level']).$aryCat['cat_name']. '</option>';
+					}
+									
 				}
 			?>
 				</select></td>

@@ -20,7 +20,7 @@ $(document).ready(function(){
 				<span>Email:<?=$ci_properties['contact_email']?><br /></span>
 				<span>Phạm vi:<?=$ci_properties['province_name']?><br /></span>
 				<span>Ngày đăng:<?=date("d/m/Y", $ci_properties['start_date'])?><br /></span>
-				<span>Giá:<?=$ci_properties['price'] . ' ' . $ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></span></td>
+				<span>Giá:<?=price_format($ci_properties['price']) . ' ' . $ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></span></td>
   <td align="right">
   <div align="left"  style=" width:375px;">
   <?php 

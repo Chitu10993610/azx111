@@ -1,7 +1,7 @@
 <?php foreach ($aryNewsList as $aryNews) { ?>						
 <div class="box2_3_box">
 	<div class="box2_3_box_head" >
-		<span><a href="front/tin_tuc/<?=$cat_id?>" class="bachuyenmuc"><?=$box_title['cat_name']?></a></span>
+		<span><a href="tin-tuc/<?=$cat_id?>" class="bachuyenmuc"><?=$box_title['cat_name']?></a></span>
 	</div>
 	<div class="box2_3_box_content" >
 		<?php $thumb = ($aryNews["news_image"]) ? $this->front_lib->get_thumb($aryNews["news_image"]) : '';?>

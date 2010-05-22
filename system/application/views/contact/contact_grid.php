@@ -39,6 +39,6 @@
 </tr>
       <? } ?>
 		</table>
-		<div style="float:left;"><?=$page_links?></div>
+		<div class="paging" style="float:left;"><?=$page_links?></div>
 	</div>
 </div>

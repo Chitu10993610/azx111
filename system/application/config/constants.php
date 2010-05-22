@@ -45,7 +45,7 @@ define('IMG_THUMB_VIDEO_PATH', IMG_VIDEO_PATH.'thumb/');
 
 //permission
 //news
-define('VIEW_LIST_NEWS', 'Quản lý bài viết');
+define('VIEW_LIST_NEWS', 'Quản lý bài viết của mình');
 define('VIEW_ALL_NEWS', 'Quản lý tất cả bài viết');
 define('ADD_NEWS', 'Viết bài');
 define('EDIT_NEWS', 'Sửa bài');
@@ -58,10 +58,23 @@ define('EDIT_CATEGORY', 'Sửa danh mục');
 define('DELETE_CATEGORY', 'Xóa danh mục');
 
 //ads
-define('ADD_ADS', 'Tạo quảng cáo');
-define('EDIT_ADS', 'Sửa quảng cáo');
-define('DELETE_ADS', 'Xóa quảng cáo');
-define('VIEW_LIST_ADS', 'List quảng cáo');
+define('VIEW_LIST_ADS', 'Quản lý tin rao của mình');
+define('VIEW_ALL_ADS', 'Quản lý tất cả tin rao');
+define('ADD_ADS', 'Đăng tin');
+define('EDIT_ADS', 'Sửa tin');
+define('PUBLISH_ADS', 'Xuất bản tin rao');
+define('DELETE_ADS_UNPUBLISH', 'Chỉ xóa tin chưa xuất bản');
+define('DELETE_ADS', 'Xóa tất cả tin rao');
+define('VIEW_LIST_CATEGORY_ADS', 'List danh mục tin rao');
+define('ADD_CATEGORY_ADS', 'Thêm danh mục tin rao');
+define('EDIT_CATEGORY_ADS', 'Sửa danh mục tin rao');
+define('DELETE_CATEGORY_ADS', 'Xóa danh mục tin rao');
+
+//ads
+define('ADD_PROMO', 'Tạo quảng cáo');
+define('EDIT_PROMO', 'Sửa quảng cáo');
+define('DELETE_PROMO', 'Xóa quảng cáo');
+define('VIEW_LIST_PROMO', 'List quảng cáo');
 
 //poll
 define('VIEW_LIST_POLL', 'List thăm dò');

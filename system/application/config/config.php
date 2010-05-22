@@ -233,11 +233,11 @@ $config['encryption_key'] = "shakes_encryption_key";
 |  by default sessions last 7200 seconds (two hours).  Set to zero for no expiration.
 |
 */
-$config['sess_cookie_name']	= 'ci_session';
-$config['sess_expiration']		= 7200;
+$config['sess_cookie_name']	= 'pn_session';
+$config['sess_expiration']		= 72000;
 $config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'ci_sessions';
+$config['sess_use_database']	= TRUE;
+$config['sess_table_name']		= 'sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 

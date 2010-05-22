@@ -1,5 +1,5 @@
 						<div class="box3_2_head">
-							<span ><a href="front/tin_tuc/21" class="box1_2_box_head_a"><?=$box_title['cat_name']?></a></span>
+							<span ><a href="tin-tuc/21" class="box1_2_box_head_a"><?=$box_title['cat_name']?></a></span>
 						</div>
 						<ul class="box3_2_ul">
 														<?php foreach ($aryNewsList as $aryNews) { ?>	

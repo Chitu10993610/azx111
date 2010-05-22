@@ -437,7 +437,7 @@ padding-right:22px;
 width:731px;
 }
 #tnpp_main_box .main_box_title .box_title_right {
-height:40px;
+height:56px;
 overflow:hidden;
 padding-right:22px;
 width:731px;
@@ -480,7 +480,7 @@ width:auto;
 
 .tnpp_button_login {
 -x-system-font:none;
-background:transparent url(../img/buttons/tnpp_btn_signin_1x20.gif) repeat-x scroll 0 0;
+background:transparent url(../images/buttons/tnpp_btn_signin_1x20.gif) repeat-x scroll 0 0;
 border:1px solid #2583E5;
 color:#FFFFFF;
 cursor:pointer;

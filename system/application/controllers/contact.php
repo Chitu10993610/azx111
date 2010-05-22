@@ -50,7 +50,7 @@ class Contact extends Controller {
 	 * Description: Extracts a list of all contact data records and displays it.
 	 */
 	function browse() {
-		$this->user_group_model->can_access('View list contact', null, null);
+		$this->user_group_model->can_access(VIEW_LIST_CONTACT, null, null);
 		
 		$start = (int)$this->uri->segment(3,0);
 		$limit_per_page = 20;
@@ -86,7 +86,7 @@ class Contact extends Controller {
     * Description: Controller function to process user modify requests
     */
 	function modify() {
-		$this->user_group_model->can_access('Edit contact', null, null);
+		$this->user_group_model->can_access(VIEW_CONTACT_DETAIL, null, null);
 		$this->load->model('contact_model');
 
 		$submit = $this->input->post('Submit');
@@ -126,7 +126,7 @@ class Contact extends Controller {
 	* Description: Controller function to process user delete requests
 	*/
 	function delete() {
-		$this->user_group_model->can_access('Delete contact', null, null);
+		$this->user_group_model->can_access(DELETE_CONTACT, null, null);
 	  	$idField = $this->uri->segment(3);
 	
 	  	$this->load->model('contact_model');

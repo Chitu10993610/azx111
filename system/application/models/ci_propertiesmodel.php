@@ -1,5 +1,5 @@
 <?
-class Ci_propertiesModel extends Model {
+class Ci_propertiesModel extends Nny_Model {
 /**
  * MODULE NAME   : ci_propertiesmodel.php
  *
@@ -108,9 +108,9 @@ var $province;
 
       $results = array();
       
-	$query = $this->db->query('SELECT COUNT(*) as total_row FROM '.$this->db->dbprefix('properties'). ' ' . $filters);
-	$row = $query->row();
-	$this->table_record_count = $row->total_row;
+//	$query = $this->db->query('SELECT COUNT(*) as total_row FROM '.$this->db->dbprefix('properties'). ' ' . $filters);
+//	$row = $query->row();
+//	$this->table_record_count = $row->total_row;
 
 
       // Filter could be an array or filter values or an SQL string.
@@ -146,24 +146,8 @@ var $province;
       $query = $this->db->query($sql);
 
       if ($query->num_rows() > 0) {
-         // ////////////////////////////////////////////////////////////////////
-         // NOTE: At this stage you could return the entire result set, like:
-         // NOTE: ...return $query->result_array();
-         // NOTE: ...The generated code loops through the result set to provide
-         // NOTE: ...the oppurtunity to provide further customisations on the
-         // NOTE: ...code (especially if you are generating in verbose mode).
-         // ////////////////////////////////////////////////////////////////////
 
-         foreach ($query->result_array() as $row)      // Go through the result set
-         {
-            // Build up a list for each column from the database and place it in
-            // ...the result set
-	
-			//process floorplan file
-//			$floorplan_file		 = @unserialize($row['floorplan_file']);
-//			$row['floorplan_file']		 = $floorplan_file['file'];
-//			$row['floorplan_file_title']	 = $floorplan_file['title'];
-
+         foreach ($query->result_array() as $row) {
 			$attach_files		 = @unserialize($row['attach_files']);
 			$row['attach_files']		 = $attach_files['file'];
 			$row['attach_files_title']	 = $attach_files['title'];
@@ -171,6 +155,9 @@ var $province;
 			$results[]		 = $row;
          }
       }
+      
+           //count
+      if($count) $this->table_record_count = $this->query_count($sql);
 
       return $results;
    }
@@ -226,12 +213,11 @@ var $province;
       $query = $this->db->query($sql);
    }
 
-   function delete_by_pkey($idField, $user_id)
-   {
-       $query = $this->db->query("DELETE FROM ".$this->db->dbprefix('properties')." WHERE id = '$idField' AND create_user = $user_id ");
+   function delete_by_pkey($idField, $user_id = 0) {
+   	if($user_id) $strWhere = " AND create_user = $user_id ";
+       $query = $this->db->query("DELETE FROM ".$this->db->dbprefix('properties')." WHERE id = '$idField' $strWhere");
 
      return true;
-
    }
 
 	function get_Id() {
