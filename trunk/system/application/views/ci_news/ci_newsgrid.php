@@ -49,7 +49,7 @@ function showSearch()
 										<td align="center" bgcolor="#C0C0C0" width="30"><b>PIC</b></td>
 										<td align="center" bgcolor="#C0C0C0"><b>Tiêu đề tin</b></td>
 										<td align="center" bgcolor="#C0C0C0" width="100"><b>Ngày</b></td>
-<!--										<td align="center" bgcolor="#C0C0C0" width="50"><b>Dịch</b></td>-->
+										<td align="center" bgcolor="#C0C0C0" width="50"><b>Người viết</b></td>
 										<td align="center" bgcolor="#C0C0C0" width="50"><b>Sửa</b></td>
 										<td align="center" bgcolor="#C0C0C0" width="30">
 										<input type="checkbox" name="chkall" value="ON" onClick="checkall();"></td>
@@ -74,10 +74,9 @@ function showSearch()
 										<?php if($aryNews["show_home"]) echo ("<font color=#CC0000>(show at home)</font>") ?>
 										</td>
 										<td align="center" width="100"><?php echo date("d/m/Y", $aryNews["create_date"])?></td>
-										<!--<td align="center" width="50">
-										<a href="<?=base_url()?>news/trans/<?php echo $aryNews["news_id"]?>">
-										<img border="0" title="Dịch bản ghi này" src="<?=base_url()?>images/i_edit.gif" width="15" height="15"></a>
-										</td>-->
+										<td align="center" width="50">
+										<?php echo $aryNews["poster_name"]?>
+										</td>
 										<td align="center" width="50">
 										<a href="<?=base_url()?>news/modify/<?php echo $aryNews["news_id"]?>">
 										<img border="0" title="Sua bản ghi nay" src="<?=base_url()?>images/i_edit.gif" width="15" height="15"></a>
@@ -90,7 +89,7 @@ function showSearch()
 									?>
 									<tr>
 										<td align="right" colspan="5">
-										<div style="float:left; text-align:left; width:200px"><?=$page_links?></div>
+										<div class="paging" style="float:left; text-align:left; width:200px"><?=$page_links?></div>
 										<input type="button" value="Thêm tin mới" name="btnAddNews" class="button" onClick="document.location.href='<?=base_url()?>news/add/<?=$cat_id?>/<?=$newsType?>'">&nbsp;
 										<input type="submit" value="Xoá các tin đã chọn" name="btnDelete" class="button" onClick="return checkGrid();" <?php If (!$numOfNews) echo "DISABLED" ?>></td>
 									</tr>

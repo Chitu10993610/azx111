@@ -101,7 +101,7 @@ $(document).ready(function(){
          <th><b><?=$ci_properties['bedrooms']?></b></th>
          <th><b><?=$ci_properties['bath']?></b> </th>
          <th><b><?=$ci_properties['square_footage']?></b> m<sup>2</sup></th>
-         <th><b><?=$ci_properties['price'] . ' ' . $ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></b></th>
+         <th><b><?=price_format($ci_properties['price']) . ' ' . $ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></b></th>
       </tr>
    </tbody>
    </table>

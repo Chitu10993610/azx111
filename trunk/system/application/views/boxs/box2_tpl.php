@@ -30,7 +30,7 @@
 						<div class="box2_4_3_bg">
 						<div  class="box2_4_3_left">
 						<div  class="box2_4_3_right">
-							<div class="box2_4_3_head"><span>Tóp giao dịch hot</span></div>
+							<div class="box2_4_3_head"><span>Tốp giao dịch hot</span></div>
 							<div style="height:175px; width:256px; overflow:auto">
 								<?=$giaodichhot?>
 							</div>	

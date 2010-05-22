@@ -1,6 +1,6 @@
 <?php foreach ($aryNewsList as $aryNews) { ?>
 <div style=" width:152px; height:218px; border-left:#E9F0C6 solid 1px; padding-left:2px; float:left">
-										<div class="box1_1_2_1a_2"><a href="front/tin_tuc/<?=$cat_id?>" class="head_hautruong"><?=$box_title['cat_name'];?></a></div>
+										<div class="box1_1_2_1a_2"><a href="tin-tuc/<?=$cat_id?>" class="head_hautruong"><?=$box_title['cat_name'];?></a></div>
 	<?php 
    if($aryNews['news_image']) {
 		?>

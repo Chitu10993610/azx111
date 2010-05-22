@@ -51,6 +51,16 @@ $route['front/:num'] = 'front/detail';
 $route['front/:num/:any'] = 'front/detail';
 //end chi tiet nha dat 
 
+//chi tiet tin rao
+$route['tin-rao/:num/:num'] = 'front/detail';
+$route['tin-rao/:num/:num/:any'] = 'front/detail';
+
+//danh muc tin rao
+$route['tin-rao'] = 'front/tin_rao';
+$route['tin-rao/:num'] = 'front/tin_rao';
+$route['tin-rao/:num/:any'] = 'front/tin_rao';
+//end chi tiet nha dat 
+
 //chi tiet tin tuc
 $route['tin-tuc/:num/:num'] = 'front/news';
 $route['tin-tuc/:num/:num/:any'] = 'front/news';
@@ -66,7 +76,7 @@ $route['my-info'] = 'admin/usergroups/myInfo';
 $route['dang-ky'] = 'front/register';
 $route['myadmin'] = 'user/login';
 $route['quan-ly-tin-rv'] = 'properties';
-$route['quan-ly-tin'] = 'news_cat';
+$route['quan-ly-tin'] = 'news/browse';
 $route['dang-tin'] = 'properties/add';
 $route['cau-hinh'] = 'config/modify';
 $route['file-manage'] = 'iht_upload';

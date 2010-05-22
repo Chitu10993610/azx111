@@ -52,7 +52,7 @@ class User extends Controller {
 					//$url = base64_decode($this->uri->segment(3));
 
 					// return page is based on flash data
-					header("Location: ".site_url('menu'));
+					header("Location: ".site_url('quan-ly-tin'));
 //					exit;
 					
 				} else {
@@ -65,7 +65,7 @@ class User extends Controller {
 					//$data['error'] = $this->lang->line('ua_name_and_pswd');
 			}
 			
-			$data['title'] = $data['h1_title'] = "�?ăng nhập";
+			$data['title'] = $data['h1_title'] = "Đăng nhập";
 			if(!isset($data['error'])) {
 				$data['username'] = '';
 				$data['password'] = '';
@@ -89,7 +89,7 @@ class User extends Controller {
 		// Two choices here, comment out one or the other
 		//redirect ($this->session->flashdata('uri'));
 		//$this->_display_logout_message();
-		redirect('');
+		redirect('myadmin');
 		// change this to ua_config option 
 		// for redirect to /user with logout message
 	}
@@ -174,6 +174,7 @@ class User extends Controller {
 				
 				// Set the session
 				$this->session->set_userdata($sessdata);
+				$_SESSION['userdata'] = $sessdata;
 				
 				$msgSuccess = 'Quá trình đăng ký thành công, chào mừng bạn "'.$username.'"';
 			}

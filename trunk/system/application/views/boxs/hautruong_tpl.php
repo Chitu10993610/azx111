@@ -1,5 +1,5 @@
 <?php foreach ($aryNewsList as $aryNews) { ?>
-<div class="box1_1_2_1a_2"><a href="front/tin_tuc/<?=$cat_id?>" class="head_hautruong">
+<div class="box1_1_2_1a_2"><a href="tin-tuc/<?=$cat_id?>" class="head_hautruong">
 
 				<?=$box_title['cat_name'];?>
 	

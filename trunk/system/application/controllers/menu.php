@@ -44,7 +44,7 @@ class Menu extends Controller {
    */
 
    function index() {
-   	$this->user_group_model->can_access('View list Menu', null, null);
+   	
       // The default action is the showall action
       $this->browse();
    }  
@@ -71,7 +71,7 @@ class Menu extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
-   	
+   	$this->user_group_model->can_access(VIEW_LIST_MENU, null, null);
       $start = $this->uri->segment(3,0);
       $limit_per_page = 20;
 //      $menuId = $this->uri->segment(3,0);
@@ -108,7 +108,7 @@ class Menu extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function add() {
-		$this->user_group_model->can_access('Add new News', null, null);
+		$this->user_group_model->can_access(ADD_MENU, null, null);
 
       $submit = $this->input->post('Submit');
       $this->load->model('menu_model');
@@ -156,7 +156,7 @@ class Menu extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
-	$this->user_group_model->can_access('Edit menu', null, null);
+	$this->user_group_model->can_access(EDIT_MENU, null, null);
       $submit = $this->input->post('Submit');
       $this->load->model('menu_model');
       $menuId = $this->uri->segment(3,0);
@@ -203,7 +203,7 @@ class Menu extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function trans() {
-	$this->user_group_model->can_access('Edit menu', null, null);
+	$this->user_group_model->can_access(EDIT_MENU, null, null);
 
 	$submit = $this->input->post('Submit');
       $this->load->model('menu_model');
@@ -248,7 +248,7 @@ class Menu extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
 	function delete() {
-		$this->user_group_model->can_access('Delete News', null, null);
+		$this->user_group_model->can_access(DELETE_MENU, null, null);
 		$menuid = $this->uri->segment(3);
 		$this->load->model('menu_model');
 		$this->menu_model->deleteMenu($menuid);

@@ -56,15 +56,21 @@ class Properties extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
 														
-   		$this->user_group_model->can_access('View list property', null, null);
+   		$this->user_group_model->can_access(VIEW_LIST_ADS, null, null);
 
+      $this->load->model('ci_propertiesmodel');                  // Instantiate the model
       $catid = (int)$this->uri->segment(3,0);
       $start = $this->uri->segment(4,0);
       $limit_per_page = 20;
+      $filter = array();
 
-      $this->load->model('ci_propertiesmodel');                  // Instantiate the model
       $user_id = $this->session->userdata('userid');
-      $filter = ($catid) ? " WHERE property_type = $catid" : '';
+ 
+      if($catid) $filter['property_type'] = $catid;
+      
+	//view my news
+	if(!access(VIEW_ALL_ADS)) $filter['create_user'] = $_SESSION['userdata']['userid'];
+      
       $the_results['ci_properties_list'] = $this->ci_propertiesmodel->findByFilter($filter, $start, $limit_per_page);  // Send the retrievelist msg
      
       $this->load->library('pagination');
@@ -96,7 +102,7 @@ class Properties extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    function add() {
    		
-   	$this->user_group_model->can_access('Add new property', null, null);
+   	$this->user_group_model->can_access(ADD_ADS, null, null);
 //   	$this->load->library('firephp');
 //	$this->firephp->error('hehe');
 
@@ -113,6 +119,10 @@ class Properties extends Controller {
 			$this->_validate_form();
 	      	
 	      	$data = $this->_get_form_values();
+	      	$data['create_user']				=  $_SESSION['userdata']['userid'];
+         	$data['create_name']				=  $_SESSION['userdata']['username'];
+         	$data['create_date']				=  time();
+         	$data['update_date']				=  time();
 		
 			$data['attach_files']		= array();
 			$ary_userfile_title		= array();
@@ -199,7 +209,7 @@ class Properties extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
-   	$this->user_group_model->can_access('Edit property', null, null);
+   	$this->user_group_model->can_access(EDIT_ADS, null, null);
 
       $this->load->helper('url');
       $error = '';
@@ -224,6 +234,10 @@ class Properties extends Controller {
 	         $this->load->model('ci_propertiesmodel');
 	         
 	         $data = $this->_get_form_values();
+			$data['update_user']				=  $_SESSION['userdata']['userid'];
+			$data['update_name']				=  $_SESSION['userdata']['username'];
+			$data['update_date']				=  time();
+         	
 	         $data['id']		= $this->input->post('id', TRUE);
 	         
 	        $data['attach_files']		= array();
@@ -337,14 +351,35 @@ class Properties extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function delete() {
-   	  $this->user_group_model->can_access('Delete property', null, null);
+	      
       $idField = $this->uri->segment(3);
       $this->load->model('ci_propertiesmodel');
+      
+      //check exist and delete file
       $data = $this->ci_propertiesmodel->retrieve_by_pkey($idField);
-      $user_id = $this->session->userdata('userid');
-      $the_results = $this->ci_propertiesmodel->delete_by_pkey($idField, $user_id);
-      $this->load->helper('url');
-      redirect($this->site_name.'/properties/browse/'.$data['property_type'], 'location');
+      
+     
+      if(access(DELETE_ADS) || (access(DELETE_ADS_UNPUBLISH) && !$data['status'])) {
+      	
+      	 $user_id = access(VIEW_ALL_ADS) ? 0 : $this->session->userdata('userid');
+	      $the_results = $this->ci_propertiesmodel->delete_by_pkey($idField, $user_id);
+	      if($data['attach_files']) {
+	      	$aryFile = unserialize($data['attach_files']);
+	      	$aryFile = $aryFile['file'];
+	      	
+	      	//path to folder file 
+	      	$path = './images/'.$this->site_name.'property';
+	      	
+	      	foreach ($aryFile as $fileDel) {
+	      		$this->_del_file($fileDel, $path);
+	      	}
+	      }
+	      
+	      redirect($this->site_name.'/properties/browse/'.$data['property_type'], 'location');
+	      exit;
+      }
+   	  
+   	  redirect('user/auth_error'); 
    }
 
    function _clear_form() {
@@ -354,59 +389,31 @@ class Properties extends Controller {
       // ///////////////////////////////////////////////////////////////////////
 		$data['id']		= '';
 		$data['name']		= '';
-		$data['owner']		= '';
 		$data['address']		= '';
-		$data['neighborhood']		= '';
 		$data['contact_name']		= '';
 		$data['contact_phone']		= '';
 		$data['contact_email']		= '';
-		$data['zip']		= '';
 		$data['infomation']		= '';
-		$data['intro_infomation']		= '';
-		$data['private_info']		= '';
 		$data['url']		= '';
 		$data['hold']		= '';
 		$data['type']		= '';
 		$data['attach_files']		= '';
-		$data['bedrooms']		= '';
-		$data['bath']		= '';
-		$data['square_footage']		= '';
-		$data['transport_router1']		= '';
 		$data['is_vip']		= '';
 		$data['is_hot']		= '';
-		$data['neighbor_hood']		= '';
 		$data['property_type']		= '';
 		$data['price']		= '';
 		$data['create_user']		= '';
 		$data['start_date']		= '';
 		$data['end_date']		= '';
-		$data['amenities']		= '';
-		$data['geocode']		= '';
 		$data['available_date']		= '';
-//		$data['floorplan_file']		= '';
-		$data['fprice']		= '';
-		$data['fsquare']		= '';
-		$data['fbedrooms']		= '';
-		$data['fbath']		= '';
-		$data['bath_max']		= '';
-		$data['bedrooms_max']		= '';
 		$data['price_max']		= '';
-		$data['square_max']		= '';
-		$data['distance']		= '';
 		$data['site_id']		= '';
 		$data['area']		= '';
 		$data['district']		= '';
 		$data['province']		= '';
-		$data['is_negotiate']		= '';
-		$data['m2']		= '';
 		$data['page_type']		= '';
-		$data['position']		= '';
-		$data['direction']		= '';
-		$data['from_to_road']		= '';
-		$data['is_power_oclock']		= '';
-		$data['is_water']		= '';
-		$data['build_year']		= '';
 		$data['currency']		= '';
+		$data['status']		= '';
 
       return $data;
 
@@ -414,61 +421,31 @@ class Properties extends Controller {
 
    function _get_form_values() {
 		$data['name']		= $this->input->post('name', TRUE);
-		$data['owner']		= $this->input->post('owner', TRUE);
 		$data['address']		= $this->input->post('address', TRUE);
-		$data['neighborhood']		= $this->input->post('neighborhood', TRUE);
 		$data['contact_name']		= $this->input->post('contact_name', TRUE);
 		$data['contact_phone']		= $this->input->post('contact_phone', TRUE);
 		$data['contact_email']		= $this->input->post('contact_email', TRUE);
-		$data['zip']		= $this->input->post('zip', TRUE);
 		$data['infomation']		= $this->input->post('infomation', TRUE);
-		$data['intro_infomation']		= $this->input->post('intro_infomation', TRUE);
-		$data['private_info']		= $this->input->post('private_info', TRUE);
 		$data['url']		= $this->input->post('url', TRUE);
 		$data['hold']		= $this->input->post('hold', TRUE);
 		$data['attach_files']		= $this->input->post('attach_files', TRUE);
-		$data['bedrooms']		= (int)$this->input->post('bedrooms', TRUE);
-		$data['bath']		= (float)$this->input->post('bath', TRUE);
-		$data['square_footage']		= (float)$this->input->post('fsquare_width', TRUE) * (float)$this->input->post('fsquare_length', TRUE);
-		$data['transport_router1']		= (int)$this->input->post('transport_router1', TRUE);
 		$data['is_vip']		= (int)$this->input->post('is_vip', TRUE);
 		$data['is_hot']		= (int)$this->input->post('is_hot', TRUE);
-		$data['neighbor_hood']		= (int)$this->input->post('neighbor_hood', TRUE);
 		$data['property_type']		= $this->input->post('property_type', TRUE);
 		$data['price']		=  		$this->input->post('price', TRUE);
+//		exit($data['price']);
 		$data['create_user']		= $this->input->post('create_user', TRUE);
 		$data['start_date']		= time();
 		$data['end_date']		= $this->input->post('end_date', TRUE);
-		$data['geocode']		= $this->input->post('geocode', TRUE);
 		$data['available_date']		=  		strtotime($this->input->post('available_date', TRUE));
-//		$data['floorplan_file']		= $this->input->post('floorplan_file', TRUE);
-		$data['fprice']		= $this->input->post('fprice', TRUE);
-		$data['fsquare_width']		= $this->input->post('fsquare_width', TRUE);
-		$data['fsquare_length']		= $this->input->post('fsquare_length', TRUE);
-		$data['fbedrooms']		= $this->input->post('fbedrooms', TRUE);
-		$data['fbath']		= $this->input->post('fbath', TRUE);
-		$data['bath_max']		= $this->input->post('bath_max', TRUE);
-		$data['bedrooms_max']		= $this->input->post('bedrooms_max', TRUE);
 		$data['price_max']		= $this->input->post('price_max', TRUE);
-		$data['square_max']		= $this->input->post('square_max', TRUE);
-		$data['distance']		= (int)$this->input->post('distance', TRUE);
-		$data['site_id']		= (int)$this->input->post('site_id', TRUE);
 		$data['district']		= (int)$this->input->post('district', TRUE);
 		$data['area']		= (int)$this->input->post('area', TRUE);
 		$data['province']		= (int)$this->input->post('province', TRUE);
 		$data['page_type']		= $this->input->post('page_type', TRUE);
-		$data['position']		= $this->input->post('position', TRUE);
-		$data['direction']		= $this->input->post('direction', TRUE);
-		$data['from_to_road']		= (int)$this->input->post('from_to_road', TRUE);
-		$data['is_power_oclock']		= $this->input->post('is_power_oclock', TRUE);
-		$data['is_water']		= $this->input->post('is_water', TRUE);
-		$data['build_year']		= (int)$this->input->post('build_year', TRUE);
-		$data['amenities']		=  	is_array($this->input->post('amenities', TRUE)) ? '|'.implode('|', $this->input->post('amenities', TRUE)).'|' : '';
-		$data['culture']		=  	is_array($this->input->post('culture', TRUE)) ? '|'.implode('|', $this->input->post('culture', TRUE)).'|' : '';
 		$data['currency']		=  	$this->input->post('currency', TRUE);
-		$data['is_negotiate']	= $this->input->post('is_negotiate', TRUE);
+		$data['status']		=  	$this->input->post('status', TRUE);
 		
-		$data['m2']				= $this->input->post('m2', TRUE);
 		$data['type']		= $this->input->post('type', TRUE);
 
          return $data;
@@ -479,41 +456,24 @@ class Properties extends Controller {
 		  //trim|required|min_length[5]|max_length[12]|xss_clean
 //      	$this->form_validation->set_rules('id','Id', 'xss_clean');
 		$this->form_validation->set_rules('name','Tiêu đề tin', 'required|xss_clean');
-		$this->form_validation->set_rules('owner','Owner', 'xss_clean');
 		$this->form_validation->set_rules('address','Address', 'xss_clean');
 		$this->form_validation->set_rules('province','Tỉnh/Thành phố', 'required|xss_clean');
-		$this->form_validation->set_rules('neighborhood','Neighborhood', 'xss_clean');
 		$this->form_validation->set_rules('contact_name','Contact_name', 'xss_clean');
 		$this->form_validation->set_rules('contact_phone','Contact_phone', 'xss_clean');
 		$this->form_validation->set_rules('contact_email','Contact email', 'valid_email|xss_clean');
-		$this->form_validation->set_rules('zip','Zip', 'xss_clean');
-		$this->form_validation->set_rules('private_info','Thông tin bí mật', 'xss_clean');
 		$this->form_validation->set_rules('url','Url', 'xss_clean');
 		$this->form_validation->set_rules('hold','Hold', 'xss_clean');
 		$this->form_validation->set_rules('type','Type', 'xss_clean');
 		$this->form_validation->set_rules('attach_files','Attach_files', 'xss_clean');
-		$this->form_validation->set_rules('bedrooms','Bedrooms', 'xss_clean');
-		$this->form_validation->set_rules('bath','Bath', 'xss_clean');
-		$this->form_validation->set_rules('square_footage','Square_footage', 'xss_clean');
-		$this->form_validation->set_rules('transport_router1','Transport_router1', 'xss_clean');
 		$this->form_validation->set_rules('is_vip','is_vip', 'xss_clean');
 		$this->form_validation->set_rules('is_hot','is_hot', 'xss_clean');
-		$this->form_validation->set_rules('neighbor_hood','Neighbor_hood', 'xss_clean');
 		$this->form_validation->set_rules('property_type','Loại tin rao vặt', 'required|xss_clean');
 		$this->form_validation->set_rules('price','Price', 'xss_clean');
 		
 		//new
 		$this->form_validation->set_rules('district','Quận/Huyện', 'xss_clean');
 		$this->form_validation->set_rules('area','Khu vực', 'xss_clean');
-		$this->form_validation->set_rules('is_negotiate','Is_negotiate', 'xss_clean');
-		$this->form_validation->set_rules('m2','M2', 'xss_clean');
 		$this->form_validation->set_rules('page_type','Page_type', 'xss_clean');
-		$this->form_validation->set_rules('position','Position', 'xss_clean');
-		$this->form_validation->set_rules('direction','Direction', 'xss_clean');
-		$this->form_validation->set_rules('from_to_road','From_to_road', 'xss_clean');
-		$this->form_validation->set_rules('is_power_oclock','Is_power_oclock', 'xss_clean');
-		$this->form_validation->set_rules('is_water','Is_water', 'xss_clean');
-		$this->form_validation->set_rules('build_year','Build_year', 'xss_clean');
 		//end
 		
 		$this->form_validation->set_error_delimiters('<div class="error">','</div>');
@@ -533,25 +493,18 @@ class Properties extends Controller {
 //		$this->load->model('ci_usersmodel');
 //		$data['ci_userslist'] = $this->ci_usersmodel->findAll();
 
-		// Retrieve the ci_amenities_list lookup values.
-		$this->load->model('ci_amenitiesmodel');
-		$data['ci_amenities_list'] = $this->ci_amenitiesmodel->findAll();
-				
-		// Retrieve the ci_culture_list lookup values.
-		$this->load->model('ci_culturemodel');
-		$data['ci_culture_list'] = $this->ci_culturemodel->findAll();
 		//province
 		$this->load->model('iht_province_model');
 		$data['provinceOption'] = $this->iht_province_model->findAll();
 		//$filter = 'where id_area =3';
 		//$data['provinceOption']=$this->iht_province_model->findByFilter($filter);
 		//district
-		$this->load->model('iht_district_model');
-		$data['districtOption'] = $this->iht_district_model->findAll();		
+//		$this->load->model('iht_district_model');
+//		$data['districtOption'] = $this->iht_district_model->findAll();		
 		
-		//district
-		$this->load->model('iht_area_model');
-		$data['areaOption'] = $this->iht_area_model->findAll();
+		//are
+//		$this->load->model('iht_area_model');
+//		$data['areaOption'] = $this->iht_area_model->findAll();
 		
 		//get guide address
 		$this->load->model('hs_configmodel');
@@ -616,6 +569,21 @@ class Properties extends Controller {
 				
 				if(stripos($fileDel, '/')) continue;
 				
+				$this->_del_file($fileDel, $path);
+				/*//get image name
+				$img_name = substr($fileDel, 0, strrpos($fileDel, '.'));
+				$ext = strrchr($fileDel, '.');
+				$thumb_name = $img_name.'_thumb'.$ext;
+				$small_name = $img_name.'_small'.$ext;
+				
+				@unlink($path.'/'.$fileDel);
+				@unlink($path.'/'.$thumb_name);
+				@unlink($path.'/'.$small_name);*/
+			}
+	}
+	
+	function _del_file ($fileDel, $path) {
+				
 				//get image name
 				$img_name = substr($fileDel, 0, strrpos($fileDel, '.'));
 				$ext = strrchr($fileDel, '.');
@@ -625,7 +593,6 @@ class Properties extends Controller {
 				@unlink($path.'/'.$fileDel);
 				@unlink($path.'/'.$thumb_name);
 				@unlink($path.'/'.$small_name);
-			}
 	}
 }
 ?>

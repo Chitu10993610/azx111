@@ -150,7 +150,7 @@ class Front_lib {
 	//get box quang cao
 	function get_box_adv($page_req, $pos, $limit) {
 		global $catId;
-		$filter = " WHERE status_flg = 1 AND view_rule REGEXP '(^|:)$catId([^0-9]|$)'";
+		$filter = " WHERE status_flg = 1 AND (view_rule REGEXP '(^|:)$catId([^0-9]|$)' OR view_rule REGEXP '(^|r)$catId([^0-9]|$)')";
 		$start = 0;
 		if($pos) $filter .= " AND position='$pos' ";
 		

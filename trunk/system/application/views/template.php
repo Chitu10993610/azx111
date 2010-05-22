@@ -80,8 +80,8 @@ function sconfirm(strMess,strURL){
 <!--		<li class=""><a href="<?=site_url()?>gioi-thieu">Giới thiệu</a></li>-->
 <!--		<li class=""><a href="<?=site_url()?>front/dichvu">Dịch vụ BĐS</a></li>-->
 <!--		<li class=""><a href="<?=site_url()?>tin-tuc">Tin BĐS</a></li>-->
-<!--		<li class=""><a href="<?=site_url()?>front/tin_tuc/project">Dự án</a></li>-->
-<!--		<li class=""><a href="<?=site_url()?>front/tin_tuc/camnang">Cẩm nang BĐS</a></li>-->
+<!--		<li class=""><a href="<?=site_url()?>tin-tuc/project">Dự án</a></li>-->
+<!--		<li class=""><a href="<?=site_url()?>tin-tuc/camnang">Cẩm nang BĐS</a></li>-->
 <!--		<li class=""><a href="<?=site_url()?>dang-tin">Đăng Tin</a></li>-->
 		<li class=""><a href="<?=site_url()?>front/contact" style="background:none;">Liên hệ</a></li>
 	</ul>

@@ -7,7 +7,7 @@ class Front extends Controller {
 //		$data['user1_are'] = ''; 
 //        $data['feature_are'] = '';
         
-        global $catId;
+        global $catId, $catAdId;
         switch ($this->uri->segment(1, 0)) {
         	case 'tim-kiem':
         		$catId = 'search';
@@ -16,6 +16,8 @@ class Front extends Controller {
         	case '':
         		$catId = 'home';
         		break;
+        	case 'tin-rao':
+        		$catAdId = $this->uri->segment(2, 0);
         	default:
         		$catId = $this->uri->segment(2, 0);
         		break;
@@ -39,7 +41,7 @@ class Front extends Controller {
 		$this->load->model('hs_configmodel');	
 		$dataConf = $this->hs_configmodel->findAll();
         $data = $dataConf[0];
-        $data['title'] = 'Giá»›i thiá»‡u';
+        $data['title'] = 'Biểu giá';
         $arydata['title'] = '<span class="upper" style="text-align:left; padding-top:0;"><b>Giá»›i thiá»‡u</b></span>';
 		$data['content'] = $data['service'];
         //$data['user1_are'] .= $this->load->view('boxs/box', $arydata, TRUE);
@@ -84,7 +86,7 @@ class Front extends Controller {
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='12' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Thời trang";
 		$data['type'] = '';
 		//$filter_rules .= 'province = '.$_SESSION['city'];
 		$this->_get_list_rao_vat($filter_rules, $data);	
@@ -97,7 +99,7 @@ function mypham_trangsuc(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='17' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Trang sức";
 		$data['type'] = '';
 		
 		//$filter_rules .= 'province = '.$_SESSION['city'];
@@ -111,7 +113,7 @@ function khac(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='18' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Khác";
 		$data['type'] = '';
 
 		//$filter_rules .= 'province = '.$_SESSION['city'];
@@ -125,7 +127,7 @@ function khac(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='13' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Thẩm mỹ - Làm đẹp";
 		$data['type'] = '';
 
 		$this->_get_list_rao_vat($filter_rules, $data);
@@ -139,7 +141,7 @@ function khac(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='14' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Mẹ và bé";
 		$data['type'] = '';
 
 		$this->_get_list_rao_vat($filter_rules, $data);
@@ -153,7 +155,7 @@ function khac(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='15' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Xe - Đời sống";
 		$data['type'] = '';
 
 		$this->_get_list_rao_vat($filter_rules, $data);
@@ -167,34 +169,31 @@ function khac(){
 			$city=$_SESSION['city'];
 			$filter_rules = "WHERE property_type='16' AND province=$city";
 		}
-		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
+		$data['title'] = "Ẩm thực";
 		$data['type'] = 0;
 		$this->_get_list_rao_vat($filter_rules, $data);
 		
 	}
-	// Tin rao
-		function tin_rao() {
-		$catId = $this->uri->segment(3, 0);
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type=$catId";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type=$catId AND province=$city";
-		}
+	
+	//list chuyen muc rao vat
+	function tin_rao() {
+		$catAdId = $this->uri->segment(2, 0);
+		$filter_rules = "WHERE property_type=$catAdId";
+		$filter_rules .= $_SESSION['city'] ? " AND province = ".$_SESSION['city'] : '';
+		
 		$data['title'] = "Tin rao";
-		$data['type'] = 0;
 		$this->_get_list_rao_vat($filter_rules, $data);
-		
 	}
-		function ha_noi() {
+	
+	function ha_noi() {
 		$filter_rules = " WHERE province='1'AND property_type='12'";
 		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
 		$data['type'] = 0;
 		$this->_get_list_rao_vat($filter_rules, $data);
 		
 	}
-		function ho_chi_minh() {
+		
+	function ho_chi_minh() {
 		
 		$filter_rules = " WHERE province='2'";
 		$data['title'] = "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
@@ -282,7 +281,7 @@ function search() {
 	function detail() {
 		//$page_req = 'front/search_result_detail';
 		$page_req = 'front/chitiet_raovat_tpl';
-		$id = $this->uri->segment(2,0);
+		$id = (int)$this->uri->segment(3,0);
 //		exit($id);
 		
 		$this->load->model('ci_propertiesmodel');                  // Instantiate the model
@@ -327,8 +326,8 @@ function search() {
 		$start = 0;
 		$start = $this->uri->segment(5,0);
 		$limit_per_page = 20;
-		$catId = $this->uri->segment(3, 11);;
-		if(!is_numeric($catId)) {
+		$catId = $this->uri->segment(2, 11);;
+		if(!is_int($catId)) {
 			$catId = 11;
 		}
 		
@@ -345,7 +344,8 @@ function search() {
 		$this->load->model('ci_newsmodel');                  // Instantiate the model
 		
 		$aryNewsList = array();
-		$filter = ($time) ? ' AND (n.create_date < '.$timeEnd . ' AND n.create_date > '.$time.')' : '';
+		$filter = ' AND news_status =1 ';
+		$filter .= ($time) ? ' AND (n.create_date < '.$timeEnd . ' AND n.create_date > '.$time.')' : '';
 		$aryNewsList = $this->ci_newsmodel->getNewsList($newsType, $catId, $start, $limit_per_page, $filter);
 		
 		$data['aryNewsMainList'] = $aryNewsList;
@@ -498,23 +498,24 @@ function search() {
 		//get adv
 		$this->load->model('ci_adsmodel');
       	
-		$filter = " WHERE status_flg = 1 AND position='Bottom'";
-    	$data['bottom_ads'] = $this->ci_adsmodel->findByFilter($filter, 0, 1);
-		// List Tinh
-		$this->load->model('iht_province_model');
+//		$filter = " WHERE status_flg = 1 AND position='Bottom'";
+//    	$data['bottom_ads'] = $this->ci_adsmodel->findByFilter($filter, 0, 1);
+		
+    	// List Tinh
+/*		$this->load->model('iht_province_model');
 		$filter = 'where id_area =3';
 		$data['provinceOption3']=$this->iht_province_model->findByFilter($filter);
 		$filter = 'where id_area =2';
 		$data['provinceOption2']=$this->iht_province_model->findByFilter($filter);
 		$filter = 'where id_area =1';
-		$data['provinceOption1']=$this->iht_province_model->findByFilter($filter);
-		
+		$data['provinceOption1']=$this->iht_province_model->findByFilter($filter);*/
 		
     	//get menu 1
     	$this->load->model('menu_model');
     	$filters = ' WHERE parent_id = 4';
     	$data['typemenu1']=$this->menu_model->find($filters);
-		//get menu tin tuc
+		
+    	//get menu tin tuc
 		//get menu 1
     	$this->load->model('nny_catmodel');
     	$data['catID']=$this->menu_model->find($filters);
@@ -522,7 +523,6 @@ function search() {
     	$filters = ' WHERE parent_id = 15';
     	$data['typemenu2']=$this->menu_model->find($filters);
 		//build box1 area
-		
 				
 		//get header banner
     	$data['ads_header'] = $this->front_lib->get_box_adv('adv/header_tpl', 'header', 2);
@@ -544,10 +544,11 @@ function search() {
 	
 //get list housing
 	function _get_list_rao_vat($filter_rules, $data) {
-//		$page_req = 'front/house_sell_tpl';
+//		$page_req = 'front/house_sell_tpl'
 		
 		$start = $this->uri->segment(5,0);
 		$limit_per_page = 24;
+		$filter_rules .= ' AND p.status = 1 ';
 		
 		$this->load->model('ci_propertiesmodel');
 		$data['ci_properties_list'] = $this->ci_propertiesmodel->findByFilter($filter_rules, $start, $limit_per_page);
@@ -622,13 +623,13 @@ function search() {
 		  	$this->load->library('form_validation');
 		  	
 		  	//field validates
-			$this->form_validation->set_rules('name','Há»? TÃªn', 'required|xss_clean');
-			$this->form_validation->set_rules('address','Ä?á»‹a chá»‰', 'xss_clean');
+			$this->form_validation->set_rules('name','Họ tên', 'required|xss_clean');
+			$this->form_validation->set_rules('address','Địa chỉ', 'xss_clean');
 			$this->form_validation->set_rules('email','Email', 'valid_email|xss_clean');
-			$this->form_validation->set_rules('phone','Ä?iá»‡n thoáº¡i', 'min_length[6]|max_length[12]|numeric|xss_clean');
-			$this->form_validation->set_rules('mobile','Di Ä‘á»™ng', 'min_length[10]|max_length[15]|numeric|required|xss_clean');
-			$this->form_validation->set_rules('subject','TiÃªu Ä‘á»?', 'required|xss_clean');
-			$this->form_validation->set_rules('content','Ná»™i dung', 'required|xss_clean');
+			$this->form_validation->set_rules('phone','Điện thoại', 'min_length[6]|max_length[12]|numeric|xss_clean');
+			$this->form_validation->set_rules('mobile','Di động', 'min_length[10]|max_length[15]|numeric|required|xss_clean');
+			$this->form_validation->set_rules('subject','Tiêu đề?', 'required|xss_clean');
+			$this->form_validation->set_rules('content','Nội dung', 'required|xss_clean');
 			
 			$this->form_validation->set_error_delimiters('<div class="error">','</div>');
 		  	$data = array();
@@ -779,9 +780,6 @@ function search() {
 		}
 		$data['title'] .= TITLE_DEFAUL;
 
-		// Get info to steer template adv
-		$data['adv'] = $page_req;
-		
 		//get adv
 		$this->load->model('ci_adsmodel');
       	

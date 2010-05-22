@@ -22,7 +22,7 @@ if($n) foreach ($ci_properties_list as $ci_properties) {
 						 </div>
 			             <div style="width:125px;height:90px;float:left;margin-left:4px;margin-top:3px;">
 				             <p style="font-size:12px;margin-top:0px;">
-							   	<a href="<?=site_url().'front/'.$ci_properties['id']?>/<?=$ci_properties['name_sef']?>" class="title_raovat" ><?=$this->front_lib->cut_string($ci_properties['name'], 60)?></a>
+							   	<a href="<?='tin-rao/'.$ci_properties['property_type'].'/'.$ci_properties['id']?>/<?=$ci_properties['name_sef']?>" class="title_raovat" ><?=$this->front_lib->cut_string($ci_properties['name'], 60)?></a>
 							</p>
 				             <p style="font-size:12px;margin-top:-8px;">
 								<a href="#" style="color:#FF0000;text-decoration:none;">Nơi đăng:<?=$ci_properties['province_name']?><br>Ngày:<?=date("d/m/Y", $ci_properties['start_date'])?></a>

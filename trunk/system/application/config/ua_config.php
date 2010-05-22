@@ -42,13 +42,13 @@ $config['ua_perm']    = array(
 																'PERMISSION'=>PERMISSION,													
 																//'Assign group',										
 																),
-										'Manage user' 			=> array(
+										'Quản lý user' 			=> array(
 																'ADD_USER'=>ADD_USER,													
 																'EDIT_USER'=>EDIT_USER,													
 																'DELETE_USER'=>DELETE_USER,													
 																'LIST_USER'=>LIST_USER,													
 																),
-										'Manage group' 			=> array(
+										'Quản lý group' 			=> array(
 																'ADD_GROUP'=>ADD_GROUP,
 																'EDIT_GROUP'=>EDIT_GROUP,
 																'DELETE_GROUP'=>DELETE_GROUP,
@@ -57,7 +57,7 @@ $config['ua_perm']    = array(
 																),
 												),
 								"Site content"=>array(
-										'Manage News' 			=> array(
+										'Quản lý News' 			=> array(
 																'ADD_NEWS'=>ADD_NEWS,
 																'EDIT_NEWS'=>EDIT_NEWS,
 																'PUBLISH_NEWS'=>PUBLISH_NEWS,
@@ -66,49 +66,50 @@ $config['ua_perm']    = array(
 																'VIEW_LIST_NEWS'=>VIEW_LIST_NEWS,
 																'VIEW_ALL_NEWS'=>VIEW_ALL_NEWS,
 																),
-										
-										'Manage News crawler' 	=> array(
-																'VIEW_LIST_NEWS_CRAWLER'=>VIEW_LIST_NEWS_CRAWLER,
-																'EDIT_NEWS_CRAWLER'=>EDIT_NEWS_CRAWLER,
-																'DELETE_NEWS_CRAWLER'=>DELETE_NEWS_CRAWLER,
-																),
-										'Manage album' 		=> array('LIST_ALBUM'=>LIST_ALBUM,
-																'ADD_ALBUM'=>ADD_ALBUM,
-																'EDIT_ALBUM'=>EDIT_ALBUM,
-																'DELETE_ALBUM'=>DELETE_ALBUM,
-																'VIEW_IMAGE_ALBUM'=>VIEW_IMAGE_ALBUM,
-																'ADD_IMAGE'=>ADD_IMAGE,
-																'EDIT_IMAGE'=>EDIT_IMAGE,
+																
+										'Quản lý tin rao' 		=> array(
+																'ADD_ADS'=>ADD_ADS,
+																'EDIT_ADS'=>EDIT_ADS,
+																'PUBLISH_ADS'=>PUBLISH_ADS,
 																'DELETE_ADS'=>DELETE_ADS,
+																'DELETE_ADS_UNPUBLISH'=>DELETE_ADS_UNPUBLISH,
+																'VIEW_LIST_ADS'=>VIEW_LIST_ADS,
+																'VIEW_ALL_ADS'=>VIEW_ALL_ADS,
 																),
-										'Manage video' 		=> array('LIST_VIDEO'=>LIST_VIDEO,
-																'ADD_VIDEO'=>ADD_VIDEO,
-																'EDIT_VIDEO'=>EDIT_VIDEO,
-																'DELETE_VIDEO'=>DELETE_VIDEO,
-																),
-										'Manage category' 		=> array('ADD_CATEGORY'=>ADD_CATEGORY,
+							'Quản lý chuyên mục tin tức' 		=> array('ADD_CATEGORY'=>ADD_CATEGORY,
 																'EDIT_CATEGORY'=>EDIT_CATEGORY,
 																'DELETE_CATEGORY'=>DELETE_CATEGORY,
 																'VIEW_LIST_CATEGORY'=>VIEW_LIST_CATEGORY,
 																),
-										'Manage Ads' 			=> array(
-																'ADD_ADS'=>ADD_ADS,
-																'EDIT_ADS'=>EDIT_ADS,
-																'DELETE_ADS'=>DELETE_ADS,
-																'VIEW_LIST_ADS'=>VIEW_LIST_ADS,
+							'Quản lý chuyên mục tin rao' 		=> array('ADD_CATEGORY_ADS'=>ADD_CATEGORY_ADS,
+																'EDIT_CATEGORY_ADS'=>EDIT_CATEGORY_ADS,
+																'DELETE_CATEGORY_ADS'=>DELETE_CATEGORY_ADS,
+																'VIEW_LIST_CATEGORY_ADS'=>VIEW_LIST_CATEGORY_ADS,
 																),
-										'Manage menu' 			=> array(
-																'ADD_POLL'=>ADD_POLL,
-																'EDIT_POLL'=>EDIT_POLL,
-																'DELETE_POLL'=>DELETE_POLL,
-																'VIEW_LIST_POLL'=>VIEW_LIST_POLL,
+																
+										'Quản lý video' 		=> array('LIST_VIDEO'=>LIST_VIDEO,
+																'ADD_VIDEO'=>ADD_VIDEO,
+																'EDIT_VIDEO'=>EDIT_VIDEO,
+																'DELETE_VIDEO'=>DELETE_VIDEO,
 																),
-										'Manage comment' 		=> array(
+										'Quản lý quảng cáo' 		=> array(
+																'ADD_PROMO'=>ADD_PROMO,
+																'EDIT_PROMO'=>EDIT_PROMO,
+																'DELETE_PROMO'=>DELETE_PROMO,
+																'VIEW_LIST_PROMO'=>VIEW_LIST_PROMO,
+																),
+										'Quản lý menu' 			=> array(
+																'ADD_MENU'=>ADD_MENU,
+																'EDIT_MENU'=>EDIT_MENU,
+																'DELETE_MENU'=>DELETE_MENU,
+																'VIEW_LIST_MENU'=>VIEW_LIST_MENU,
+																),
+										'Quản lý comment' 		=> array(
 																'VIEW_COMMENT_DETAIL'=>VIEW_COMMENT_DETAIL,
 																'DELETE_COMMENT'=>DELETE_COMMENT,
 																'VIEW_LIST_COMMENT'=>VIEW_LIST_COMMENT,
 																),
-										'Manage contact' 		=> array(
+										'Quản lý contact' 		=> array(
 																'VIEW_LIST_CONTACT'=>VIEW_LIST_CONTACT,
 																'DELETE_CONTACT'=>DELETE_CONTACT,
 																'VIEW_CONTACT_DETAIL'=>VIEW_CONTACT_DETAIL,

@@ -44,7 +44,7 @@ class News_cat extends Controller {
    */
 
    function index() {
-   	$this->user_group_model->can_access('View list News', null, null);
+   
       // The default action is the showall action
       $this->browse();
    }  
@@ -71,7 +71,7 @@ class News_cat extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
-   	
+   		$this->user_group_model->can_access(VIEW_LIST_CATEGORY, null, null);
       $start = $this->uri->segment(3,0);
       $limit_per_page = 20;
 //      $catId = $this->uri->segment(3,0);
@@ -108,7 +108,7 @@ class News_cat extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function add() {
-		$this->user_group_model->can_access('Add new News', null, null);
+		$this->user_group_model->can_access(ADD_CATEGORY, null, null);
 
       $submit = $this->input->post('Submit');
       $this->load->model('nny_news_catmodel');
@@ -156,7 +156,7 @@ class News_cat extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
-	$this->user_group_model->can_access('Edit News', null, null);
+	$this->user_group_model->can_access(EDIT_CATEGORY, null, null);
       $submit = $this->input->post('Submit');
       $this->load->model('nny_news_catmodel');
       $catId = $this->uri->segment(3,0);
@@ -201,7 +201,7 @@ class News_cat extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
 	function delete() {
-		$this->user_group_model->can_access('Delete News', null, null);
+		$this->user_group_model->can_access(DELETE_CATEGORY, null, null);
 		$catid = $this->uri->segment(3);
 		$this->load->model('nny_news_catmodel');
 		$this->nny_news_catmodel->deleteCat($catid);

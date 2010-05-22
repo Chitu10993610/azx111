@@ -13,7 +13,7 @@
 										<ul class="new_ul">
 											<?=$topnews?>
 										</ul>
-										<div align="right" style="padding-right:10px;"><a href="./front/tin_tuc/16"><img style="border:#FFFFFF solid 0px;" src="images/chitiet.png"></a></div>
+										<div align="right" style="padding-right:10px;"><a href="./tin-tuc/16"><img style="border:#FFFFFF solid 0px;" src="images/chitiet.png"></a></div>
 									</div></div></div>
 								</div>
 

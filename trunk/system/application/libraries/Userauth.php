@@ -115,7 +115,8 @@ class Userauth {
 		$sessdata = array('username'=>'', 'userid'=>'', 'groupid'=>'', 'loggedin' => FALSE );
 		$this->obj->session->set_userdata($sessdata);
 		$this->obj->remember_me->removeRememberMe();
-		$this->obj->session->sess_destroy();
+		@$this->obj->session->sess_destroy();
+		@session_destroy();
 	}
 
 	/**
@@ -140,6 +141,10 @@ class Userauth {
 			
 			$sessdata = array();
 			$sessdata = $this->obj->user_group_model->getUserInfo($username);
+
+			//get permision info		
+			$perm = $this->obj->user_group_model->getPermInfo($sessdata['groupid']);
+			$sessdata['perm'] = $perm;
 			$sessdata['loggedin'] = TRUE;
 			
 				// Set session data array

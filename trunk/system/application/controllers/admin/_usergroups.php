@@ -102,7 +102,7 @@ class Usergroups extends Controller {
 	}
 
 	function addUser () {
-		$this->user_group_model->can_access(ADD_USER);
+		$this->user_group_model->can_access('Add new user');
 
 		$this->load->library('user_lib');
 	
@@ -216,7 +216,6 @@ class Usergroups extends Controller {
 		$data['username'] = $this->session->userdata('username');;
 		
 		if(!$submit) $data = $this->user_group_model->listUserInfo($userid);
-		unset($data['userid']);
 
 		$data['listAllGroups'] = $this->user_group_model->listUG('groups');
 
@@ -236,7 +235,7 @@ class Usergroups extends Controller {
 	
 	function removeUser ()
 	{
-		$this->user_group_model->can_access(DELETE_USER);
+		$this->user_group_model->can_access('Delete user');
 		$userid = (int) $this->uri->segment(4);
 		$username = $this->user_group_model->getUserName($userid);
 		if ($this->user_group_model->removeUser($username)) {
@@ -254,7 +253,7 @@ class Usergroups extends Controller {
 	
 	function addGroup ()
 	{
-		$this->user_group_model->can_access(ADD_GROUP);
+		$this->user_group_model->can_access('Add new group');
 		$this->load->library('validation');
 //		$ua_data['listAllAps'] = $this->user_group_model->listAp();
 //		$rules['ap'] = "required|numeric";
@@ -296,7 +295,7 @@ class Usergroups extends Controller {
 
 	function editGroup ()
 	{
-		$this->user_group_model->can_access(EDIT_GROUP);
+		$this->user_group_model->can_access('Edit group');
 		$this->load->library('validation');
 		$groupid = (int) $this->uri->segment(4, $this->input->post('groupid', TRUE));
 //		$ua_data['listAllAps'] = $this->user_group_model->listAp();
@@ -340,7 +339,7 @@ class Usergroups extends Controller {
 
 	function removeGroup ()
 	{
-		$this->user_group_model->can_access(DELETE_GROUP);
+		$this->user_group_model->can_access('Delete group');
 		$status = $this->user_group_model->removeGroup((int) $this->uri->segment(4));
 		if ($status == 0) {
 			$this->session->set_flashdata('groupmsg', $this->lang->line('ua_removal_err'));
@@ -458,7 +457,7 @@ class Usergroups extends Controller {
 	 * administer permissions.
 	 */
 	function perm()	{
-		$this->user_group_model->can_access(PERMISSION);
+		$this->user_group_model->can_access('Permision');
 		$this->load->library('validation');
 		$groupid = $this->uri->segment(4, $this->input->post('groupid', TRUE));
 //		$appid = $this->input->post('appid', TRUE);

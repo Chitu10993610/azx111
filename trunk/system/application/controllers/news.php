@@ -46,7 +46,7 @@ class News extends Controller {
    */
 
    function index() {
-   	$this->user_group_model->can_access('View list News', null, null);
+   	
       // The default action is the showall action
       $this->browse();
    }
@@ -58,7 +58,13 @@ class News extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
+   	$this->user_group_model->can_access(VIEW_LIST_NEWS, null, null);
    	
+		$filter = '';
+		
+		//view my news
+		if(!access(VIEW_ALL_NEWS)) $filter .=' AND poster = ' . $_SESSION['userdata']['userid'];
+		
       $start = (int)$this->uri->segment(5,0);
       $limit_per_page = 30;
       $cat_id = (int)$this->uri->segment(3, 0);
@@ -67,7 +73,7 @@ class News extends Controller {
       $this->load->model('ci_newsmodel');                  // Instantiate the model
       
 		$aryNewsList = array();
-		$aryNewsList = $this->ci_newsmodel->getNewsList($newsType, $cat_id, $start, $limit_per_page);
+		$aryNewsList = $this->ci_newsmodel->getNewsList($newsType, $cat_id, $start, $limit_per_page, $filter);
 	
 	  $the_results['aryNewsList'] = $aryNewsList;
 	  $the_results['numOfNews'] = $this->ci_newsmodel->table_record_count;
@@ -98,8 +104,7 @@ class News extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function add() {
-	
-   	$this->user_group_model->can_access('Add new News', null, null);
+   	$this->user_group_model->can_access(ADD_NEWS, null, null);
 		$cat_type = $this->uri->segment(4,'news');
 		$cat_id = (int)$this->uri->segment(3,0);
       $submit = $this->input->post('Submit');
@@ -117,6 +122,8 @@ class News extends Controller {
          // ////////////////////////////////////////////////////////////////////
          $this->load->model('ci_newsmodel');
          $aryNewsInfo = $this->_get_form_values();
+         $aryNewsInfo['poster']				=  $_SESSION['userdata']['userid'];
+         $aryNewsInfo['poster_name']		=  $_SESSION['userdata']['username'];
          
          $error = $this->_upload($aryNewsInfo, $_FILES['news_image']['name'], 'news_image', '');
          
@@ -159,7 +166,7 @@ class News extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    function modify() {
 		
-   	$this->user_group_model->can_access('Edit News', null, null);
+   	$this->user_group_model->can_access(EDIT_NEWS, null, null);
 
 
       $submit = $this->input->post('Submit');
@@ -168,6 +175,9 @@ class News extends Controller {
       if ( $submit != false ) {
       	$this->load->library('form_validation');
       	$aryNewsInfo = $this->_get_form_values();
+      	
+      	 $aryNewsInfo['update_user']				=  $_SESSION['userdata']['userid'];
+         $aryNewsInfo['update_name']				=  $_SESSION['userdata']['username'];
       	
       	//field validates
       	$this->_validate_form();
@@ -222,7 +232,7 @@ class News extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    function trans() {
 		
-		$this->user_group_model->can_access('Edit News', null, null);
+		$this->user_group_model->can_access(EDIT_NEWS, null, null);
 		$this->load->helper('url');
 		
 		$news_id = (int)$this->uri->segment(3,$this->input->post('news_id'));

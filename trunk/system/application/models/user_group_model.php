@@ -4,16 +4,14 @@
 
 class User_group_model extends Model {
 
-	function User_group_model()
-	{
+	function User_group_model()	{
 		parent::Model();
 		$this->obj =& get_instance();
 		$this->prefix = $this->obj->db->dbprefix;
 	}
 
 	// Test if latest schema, user_group
-	function valid_db() 
-	{
+	function valid_db() {
 		return $this->db->table_exists('users');
 	}
 
@@ -22,7 +20,6 @@ class User_group_model extends Model {
 	|				functions of usergroup (joined) table
 	|--------------------------------------------------------------------------
 	*/
-	
 	// a function to join tables, intended private
 	function _joinTables()
 	{
@@ -40,13 +37,27 @@ class User_group_model extends Model {
 
 	// get everything listed in order
 	function listAllInfo($groupid = 1, $order = 'username') {
-		$strWhere = ($groupid) ? ' AND g.groupid = '.$groupid : '';
+		$strWhere = ($groupid) ? ' AND g.groupid = '.$groupid : ' AND g.groupid != 3 ';
 		$query = $this->db->query('SELECT u.*, g.*  FROM '.$this->prefix.'users u
 								LEFT JOIN '.$this->prefix.'usersgroups ON('.$this->prefix.'usersgroups.userid = u.userid)
 								LEFT JOIN '.$this->prefix.'groups g ON('.$this->prefix.'usersgroups.groupid = g.groupid)
 								WHERE type = 0'.$strWhere);
 		
 		return $query;
+	}
+	
+	// get everything listed in order
+	function listUserByFilter($filter = '') {
+		$aryResult = array();
+		$result = $this->db->query('SELECT u.*, g.*  FROM '.$this->prefix.'users u
+								LEFT JOIN '.$this->prefix.'usersgroups ON('.$this->prefix.'usersgroups.userid = u.userid)
+								LEFT JOIN '.$this->prefix.'groups g ON('.$this->prefix.'usersgroups.groupid = g.groupid)
+								'.$filter);
+		foreach ($result->result_array() as $ary) {
+			$aryResult[] = $ary;
+		}
+		
+		return $aryResult;
 	}
 	
 	// Get user and group info for $userid
@@ -188,8 +199,8 @@ class User_group_model extends Model {
 		}
 	}
 
-	function editUser ($userid, $data)
-	{
+	function editUser ($userid, $data) {
+			$result = '';
 			$groupId = $data['groupid'];
 			unset($data['groupid']);
 			
@@ -199,11 +210,14 @@ class User_group_model extends Model {
 			}
 			
 			$this->db->where('userid', $userid);
-			$this->db->update('users', $data);  // users table
+			$result = $this->db->update('users', $data);  // users table
 			
-			$this->db->where('userid', $userid);
-			return $this->db->update('usersgroups', 
-						array('groupid'=>$groupId));	// add to usergroups
+			if($groupId) {
+				$this->db->where('userid', $userid);
+				$result = $this->db->update('usersgroups', array('groupid'=>$groupId));	// add to usergroups
+			}
+			
+			return $result; 
 	}
 
 	/**
@@ -586,15 +600,15 @@ $query = $this->db->get_where('groups', array('groupid' => $groupid));
 		
 		// Save permissions:
 		$result = $this->db->query('SELECT * FROM '.$this->prefix.'groups');
-		foreach ($result->result() as $role) {
-			if (isset($form_values[$role->groupid])) {
+		foreach ($result->result() as $group) {
+			if (isset($form_values[$group->groupid])) {
 				// Delete, so if we clear every checkbox we reset that role;
 				// otherwise permissions are active and denied everywhere.
-				$this->db->query('DELETE FROM '.$this->prefix.'permission WHERE groupid = ?', array($role->groupid));
-				$form_values[$role->groupid] = array_filter($form_values[$role->groupid]);
+				$this->db->query('DELETE FROM '.$this->prefix.'permission WHERE groupid = ?', array($group->groupid));
+				$form_values[$group->groupid] = array_filter($form_values[$group->groupid]);
 				
-				if (count($form_values[$role->groupid])) {
-					$this->db->query("INSERT INTO ".$this->prefix."permission (groupid, perm) VALUES (?, ?)", array($role->groupid, implode(', ', array_keys($form_values[$role->groupid]))));
+				if (count($form_values[$group->groupid])) {
+					$this->db->query("INSERT INTO ".$this->prefix."permission (groupid, perm) VALUES (?, ?)", array($group->groupid, implode(', ', array_values($form_values[$group->groupid]))));
 				}
 			}
 		}
@@ -636,17 +650,12 @@ $query = $this->db->get_where('groups', array('groupid' => $groupid));
 		
 		if(!$userid || !$groupid) return $canAccess;
 		
-		if (!isset($perm[$userid])) {
-			
-			$result = $this->db->query("SELECT DISTINCT(p.perm) FROM ".$this->prefix."groups g INNER JOIN ".$this->prefix."permission p ON p.groupid = g.groupid WHERE g.groupid = ?", $groupid);
-			$perm[$userid] = '';
-			
-			$row = $result->row();
-			$perm[$userid] .= "$row->perm, ";
-		}
+		$result = $this->db->query("SELECT DISTINCT(p.perm) FROM ".$this->prefix."groups g INNER JOIN ".$this->prefix."permission p ON p.groupid = g.groupid WHERE g.groupid = ?", $groupid);
+		$row = $result->row();
+		$perm = explode(', ', $row->perm);
 		
-		if (isset($perm[$userid])) {
-			return strpos($perm[$userid], "$string, ") !== FALSE;
+		if (sizeof($perm)) {
+			return in_array($string, $perm);
 		}
 		
 		return FALSE;
@@ -664,6 +673,15 @@ $query = $this->db->get_where('groups', array('groupid' => $groupid));
 		return $rows[0];
 	}
 	
+	// get permision info
+	function getPermInfo($groupid)	{
+		$perm = array();
+		$result = $this->db->query("SELECT DISTINCT(p.perm) FROM ".$this->prefix."groups g INNER JOIN ".$this->prefix."permission p ON p.groupid = g.groupid WHERE g.groupid = ?", $groupid);
+		$row = $result->row();
+		$perm = explode(', ', $row->perm);
+		return $perm;
+	}
+	
 	/**
 	* get list user not in group
 	*
@@ -671,15 +689,13 @@ $query = $this->db->get_where('groups', array('groupid' => $groupid));
 	* 'users', 'groups'
 	* @return array Array containing list of users/groups
 	*/	
-	function listUserNotInGroup($appid){
+	function listUserNotInGroup(){
 		$result = '';
-		if($appid) {
 		
 			$result = $this->db->query('SELECT DISTINCT(userid), username, fullname FROM '.$this->prefix.'users WHERE userid NOT IN
 											(SELECT DISTINCT(u.userid) FROM `'.$this->prefix.'users` u
 												INNER JOIN '.$this->prefix.'usersgroups ug ON (u.userid = ug.userid AND
-												ug.groupid IN (SELECT groupid FROM '.$this->prefix.'groups WHERE apid = ?)))', $appid);
-		}
+												ug.groupid IN (SELECT groupid FROM '.$this->prefix.'groups)))');
 		
 		return $result;
 	}
