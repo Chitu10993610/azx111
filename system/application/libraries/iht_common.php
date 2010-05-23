@@ -33,7 +33,7 @@ class Iht_Common {
 		$config['quality'] = '100%';
 		$config['create_thumb'] = $creat_thumb;
 		$config['thumb_marker'] = $thumb_marker;
-		$config['width'] = ($width) ? $width : $height;
+		$config['width'] = $width;
 		$config['height'] = ($height)? $height : $width;
 		
 		$this->obj->image_lib->initialize($config); 
