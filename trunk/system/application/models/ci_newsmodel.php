@@ -284,10 +284,11 @@ var $news_url;
 		$sql = "SELECT n.*, nd.* FROM ".$this->prefix."news n,".$this->prefix."news_des nd " .$fromtable ."
 		WHERE n.news_id = nd.news_id " . $strWhere . $filter
 		." ORDER BY create_date DESC";
-//		exit($sql);
+
 		$total_row = 0;
 		$aryNewsList = $this->pager_query($sql, $total_row, $start, $limit);
 		$this->table_record_count = $total_row;
+
 		return $aryNewsList;		 									 
 	}
 	/**

@@ -25,9 +25,7 @@
 						<div class="box1_1_2">
 							<div class="box1_1_2_1">
 								<div class="box1_1_2_1a">
-									<div class="box1_1_2_1a_1">
-									<?=$hautruong?>
-									<?=$thoicuoc?>	
+									<?=$hautruong_thoicuoc?>
 								</div>
 								<?=$quangcao2?>
 							</div>
@@ -42,25 +40,7 @@
 					
 					<!--BEGIN BOX 1.2 -->
 					<div class="box1_2">
-					 	<div>
-							<?=$chuyenla?>
-							<?=$thethao?>
-
-						</div>
-					 	<div>
-							<?=$vanhoa?>
-							<?=$kinhdoanh?>
-						</div>
-					 	<div>
-							
-							<?=$doisong?>
-							<?=$tamsu?>
-
-						</div>
-					 	<div>
-							<?=$thoitrang?>
-							<?=$thitruong?>
-						</div>
+							<?=$chuyenla_tt_vh_kd?>
 					<!--END BOX 1.2 -->
 					</div>
 				<!-- BEGIN BOX 2.1-->
@@ -68,28 +48,7 @@
 					<div class="box2_1_bg">
 					<div class="box2_1_left">
 					<div class="box2_1_right">
-						<div class="box2_1_box">
-							<?=$batdongsan?>
-						</div>
-						<div class="box2_1_box">
-							<?=$chungkhoan?>
-						</div>
-						<div class="box2_1_box">
-							<?=$doanhnhan?>
-						</div>
-						<div class="box2_1_box">
-							<?=$giadinh?>
-						</div>
-						<div class="box2_1_box">
-							<?=$moitruong?>
-						</div>
-						<div class="box2_1_box">
-							<?=$goctamhon?>
-						</div>
-						<div class="box2_1_box">
-							<?=$dienanh?>
-						</div>
-						
+						<?=$bds_ck_doanhnhan?>
 					</div></div></div>
 					<!-- END BOX 2.1-->
 					

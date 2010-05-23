@@ -426,8 +426,8 @@ class News extends Controller {
 				
 				//resize image
 				$this->load->library('iht_common');
-				$error = $this->iht_common->create_thumb($img_fullpath, 480, 0, false); //resize
-				$error .= $this->iht_common->create_thumb($img_fullpath, 150, 0, true);
+				$error = $this->iht_common->create_thumb($img_fullpath, 480, 368, false); //resize
+				$error .= $this->iht_common->create_thumb($img_fullpath, 130, 100, true);
 				
 				if($water_mark) $this->iht_common->water_mark($img_fullpath, true, 'images/autovn/logo_wm.png');
 			}

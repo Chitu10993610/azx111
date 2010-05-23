@@ -40,45 +40,27 @@ class Front_lib {
 	function _build_box1_front(&$data) {
 			
 		$arydata['feature'] = 	$this->_get_box_feature();
-		$arydata['hautruong'] = 	$this->_get_box_hau_truong();
-		$arydata['thoicuoc'] = 	$this->_get_box_thoi_cuoc();
-		$arydata['chuyenla'] = 	$this->_get_box_chuyen_la();
-		$arydata['thethao'] = 	$this->_get_box_the_thao();
-		$arydata['vanhoa'] = 	$this->_get_box_van_hoa();
-		$arydata['kinhdoanh'] = $this->_get_box_kinh_doanh();
-		$arydata['doisong'] = 	$this->_get_box_doi_song();
-		$arydata['tamsu'] = $this->_get_box_tam_su();
-		$arydata['thoitrang'] = $this->_get_box_thoi_trang();
-		$arydata['thitruong'] = $this->_get_box_thi_truong();	
 		$arydata['topnews'] = $this->_get_box_topnews();
-		$arydata['batdongsan'] = $this->_get_box_bat_dong_san();
-		$arydata['chungkhoan'] = $this->_get_box_chung_khoan();
-		$arydata['doanhnhan'] = $this->_get_box_doanh_nhan();
-		$arydata['giadinh'] = $this->_get_box_gia_dinh();
-		$arydata['moitruong'] = $this->_get_box_moi_truong();
-		$arydata['goctamhon'] = $this->_get_box_goc_tam_hon();
-		$arydata['dienanh'] = $this->_get_box_dien_anh();
+		
+		$arydata['hautruong_thoicuoc'] = $this->get_box_group1();
+		$arydata['chuyenla_tt_vh_kd'] = $this->get_box_group2();
+		
+		$arydata['bds_ck_doanhnhan'] = $this->get_box_group3();
+		
 		$arydata['quangcao1'] = $this->get_box_adv('adv/quangcao1_tpl', 'quangcao1', 1);
 		$arydata['quangcao2'] = $this->get_box_adv('adv/quangcao2_tpl', 'quangcao2', 1);
 		
-		//$arydata['feature'] = 	$this->obj->load->view('boxs/feature_tpl',$data, TRUE);
-		//$arydata['topnews'] = 	$this->obj->load->view('boxs/topnews_tpl',$data, TRUE);
-		//$arydata['hautruong'] = 	$this->obj->load->view('boxs/hautruong_tpl',$data, TRUE);
-		//$arydata['thoicuoc'] = 	$this->obj->load->view('boxs/thoicuoc_tpl',$data, TRUE);
 		$arydata['video'] = 	$this->obj->load->view('boxs/video_tpl',$data, TRUE);
-		//$arydata['chuyenla'] = 	$this->obj->load->view('boxs/chuyenla_tpl',$data, TRUE);
 		$data['box1_area'] .= $this->obj->load->view('boxs/box1_tpl', $arydata, TRUE);
 	}
 	
 		//build box2 front page
 	function _build_box2_front(&$data) {
 		$data['box2_area'] = '';
-		//$arydata['title'] = "";
-		$arydata['giaitri'] = $this->_get_box_giai_tri();
-		$arydata['suckhoe'] = $this->_get_box_suc_khoe();
-		$arydata['lamdep'] = $this->_get_box_lam_dep();
+		$arydata['giaitri_suckhoe_lamdep'] = $this->get_box_group4();
 		$arydata['thegioiphunu'] = $this->_get_box_the_gioi_phu_nu();
-		//$arydata['giaodichhot'] = $this->_get_box_house_newest2();
+		
+		//dungbt tam thoi comment
 		$arydata['thoitiet'] = $this->obj->load->view('boxs/vninfo_tpl', $data, TRUE);
 		$arydata['quangcao3'] = $this->get_box_adv('adv/quangcao3_tpl', 'quangcao3', 3);
 		// tin rao vip
@@ -92,10 +74,7 @@ class Front_lib {
 
 		//build box3 front page
 	function _build_box3_front(&$data) {
-		//$data['box3_area'] = '';
-		//$arydata['title'] = "";
-		$arydata['congdongyoushop'] = $this->_get_box_cong_dong_youshop();
-		$arydata['congdongmuasam'] = $this->_get_box_cong_dong_mua_sam();
+		$arydata['congdong'] = $this->get_box_group5();
 		$arydata['kinhnghiem'] = $this->_get_box_kinh_nghiem();
 		
 		$data['box3_area'] .= $this->obj->load->view('boxs/box3_tpl', $arydata, TRUE);
@@ -110,21 +89,6 @@ class Front_lib {
 		
 		//build right front page
 	function _build_right_front(&$data) {
-		//$data['right_area'] = '';
-		//$arydata['title'] = 'Link website';
-		//$arydata['content'] = $this->obj->load->view('boxs/jumlink_tpl', $data, TRUE);		//box moi nhat
-		//$data['right_area'] .= $this->obj->load->view('boxs/box', $arydata, TRUE);
-		
-		//if(!$this->obj->session->userdata('username')) {
-			//$arydata['title'] = 'Thành viên đăng nhập';
-			//$arydata['content'] = $this->obj->load->view('boxs/login_tpl', $data, TRUE);
-			//$data['right_area'] .= $this->obj->load->view('boxs/box', $arydata, TRUE);
-		//}
-
-		//$arydata['title'] = "Tin nổi bật";
-		//$arydata['content'] = 	$this->_get_box_newest();	//box moi nhat
-		//$data['right_area'] .= $this->obj->load->view('boxs/box', $arydata, TRUE);
-		
 		$arydata['title'] = '';
 		$arydata['content'] =$this->get_box_adv('adv/adv_tpl', 'right', 30); // quang cao
 		$data['right_area'] .= $this->obj->load->view('boxs/box_right', $arydata, TRUE);
@@ -149,8 +113,10 @@ class Front_lib {
 	}	
 	//get box quang cao
 	function get_box_adv($page_req, $pos, $limit) {
-		global $catId;
-		$filter = " WHERE status_flg = 1 AND (view_rule REGEXP '(^|:)$catId([^0-9]|$)' OR view_rule REGEXP '(^|r)$catId([^0-9]|$)')";
+		global $catId, $catAdId;
+		$strWhere = $catId ? " view_rule REGEXP '(^|:)$catId([^0-9]|$)' " : " view_rule REGEXP '(^|r)$catAdId([^0-9]|$)' ";
+
+		$filter = " WHERE status_flg = 1 AND $strWhere";
 		$start = 0;
 		if($pos) $filter .= " AND position='$pos' ";
 		
@@ -297,36 +263,6 @@ class Front_lib {
 		$data['aryNewsList'] = $aryNewsList;
 		return $this->obj->load->view('boxs/feature_tpl', $data, TRUE);
 	}
-		// Lay tin hau truong
-	function _get_box_hau_truong() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,4 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 4;
-		$catId=4;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/hautruong_tpl', $data, TRUE);
-	}
-		// Lấy tin thời cuộc
-	function _get_box_thoi_cuoc() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,8 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 8;
-		$catId=8;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/thoicuoc_tpl', $data, TRUE);
-	}
 		// Lấy tin moi nong
 	function _get_box_topnews() {
 		$filter_rules = " AND show_home=1 && news_status = 1";
@@ -340,289 +276,89 @@ class Front_lib {
 	}
 		// BOX TRUNG TIN TUC DAU TIEN 8 CHUYEN MUC
 	
-	// Lay tin Chuyen la
-	function _get_box_chuyen_la() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
+	//
+	/**
+	 * get_box_group, lay tin tong hop 1, chuyen la, the thao, van hoa
+	 *
+	 * @return unknown
+	 */
+	function get_box_group($parrent_id, $limitCat, $limitNews) {
 		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,11 , $start, $limit_per_page, $filter_rules);
-		$data['aryNewsList'] = $aryNewsList;
-		$data['cat_id'] = 11;
-		$catId=11;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_left';
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
-		// Lay tin the thao
-	function _get_box_the_thao() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,12, $start, $limit_per_page, $filter_rules);
-		$data['aryNewsList'] = $aryNewsList;
-		$data['cat_id'] = 12;
-		$catId=12;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_right';
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
-		// Lay tin văn hóa
-	function _get_box_van_hoa() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,13 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 13;
-		$catId=13;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_left';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
-		// Lay tin kinh doanh
-	function _get_box_kinh_doanh() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,14 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 14;
-		$catId=14;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_right';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
+		$aryData = array();
+		$data = array();
 		
-	// Doi song
-		function _get_box_doi_song() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,22 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 22;
-		$catId=22;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_left';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
+		$this->obj->load->model('nny_news_catmodel', 'catModel');
+		$this->obj->load->model('ci_newsmodel'); 
 		
-	// Tam su
-		function _get_box_tam_su() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,24 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 24;
-		$catId=24;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_right';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
+		$filterCat = " WHERE parent_id = $parrent_id AND cat_status = 1 ";
+		$filterNews = " AND show_home=1 && news_status = 1";
+		$aryCatList = $this->obj->catModel->findByFilter($filterCat, $start, $limitCat);
+		
+		if(is_array($aryCatList) && sizeof($aryCatList)) 
+		foreach ($aryCatList as $aryCat) {
 			
-	// Thoi trang
-		function _get_box_thoi_trang() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,23 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 23;
-		$catId=23;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_left';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
-	}
+			$data['aryNewsList'] = $this->obj->ci_newsmodel->getNewsList(0, $aryCat['cat_id'] , $start, $limitNews, $filterNews);
+			$data['cat_id'] = $aryCat['cat_id'];
+			$data['cat_name']= $aryCat['cat_name'];
+			array_push($aryData, $data);
+		}
 		
-	// thi truong
-		function _get_box_thi_truong() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,25 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 25;
-		$catId=25;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['box_class'] = 'box1_2_box_right';
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/tonghop_tpl', $data, TRUE);
+		return $aryData;
 	}
-		
-	//BOX 6 CHUYEN MUC
-	// Lay tin bat dong san
-	function _get_box_bat_dong_san() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,17 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 17;
-		$catId=17;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
+	
+	/**
+	 * get box tong hop 1: hau truong, thoi cuoc
+	 *
+	 * @return string
+	 */
+	function get_box_group1() {
+		$aryData = array();
+		$aryData['aryCatList'] = $this->get_box_group(43, 2, 1);
+		return $this->obj->load->view('boxs/hautruong_tpl', $aryData, TRUE);
 	}
-	// chung khoan	
-	function _get_box_chung_khoan() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,26 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 26;
-		$catId=26;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
+	
+	/**
+	 * get box tong hop 2 : chuyen la, the thao, van hoa, kinh doanh...
+	 *
+	 * @return string
+	 */
+	function get_box_group2() {
+		$aryData = array();
+		$aryData['aryCatList'] = $this->get_box_group(42, 8, 1);
+		return $this->obj->load->view('boxs/tonghop_tpl', $aryData, TRUE);
 	}
-	// Doanh nhan
-	function _get_box_doanh_nhan() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,27 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 27;
-		$catId=27;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
+	
+	/**
+	 * get box tong hop 3 : bds chung khoan, doanh nhan
+	 *
+	 * @return string
+	 */
+	function get_box_group3() {
+		$aryData = array();
+		$aryData['aryCatList'] = $this->get_box_group(44, 7, 1);
+		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $aryData, TRUE);
 	}
-		// Gia đình
-	function _get_box_gia_dinh() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,28 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 28;
-		$catId=28;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
+	
+	/**
+	 * get box tong hop 3 : 3 chuyen muc giai tri, suc khoe, lam dep
+	 *
+	 * @return string
+	 */
+	function get_box_group4() {
+		$aryData = array();
+		$aryData['aryCatList'] = $this->get_box_group(45, 3, 1);
+		return $this->obj->load->view('box2/ba_chuyen_muc_tpl', $aryData, TRUE);
 	}
-		// Môi trường
-	function _get_box_moi_truong() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,29 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 29;
-		$catId=29;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
-	}
-		// Góc tâm hôn
-	function _get_box_goc_tam_hon() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,30, $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 30;
-		$catId=30;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
-	}
-		function _get_box_dien_anh() {
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,31, $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 31;
-		$catId=31;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('boxs/sau_chuyen_muc_tpl', $data, TRUE);
-	}
-	// BOX 3 CHUYEN MUC
-	// Lay tin giai tri
-	function _get_box_giai_tri(){
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,18 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 18;
-		$catId=18;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('box2/ba_chuyen_muc_tpl', $data, TRUE);
-	}
-		// Lay Box sức khỏe
-	function _get_box_suc_khoe(){
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,32 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 32;
-		$catId=32;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('box2/ba_chuyen_muc_tpl', $data, TRUE);
-	}
-		// Lay box làm đẹp
-	function _get_box_lam_dep(){
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 1;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,33 , $start, $limit_per_page, $filter_rules);
-		$data['cat_id'] = 33;
-		$catId=33;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('box2/ba_chuyen_muc_tpl', $data, TRUE);
+	
+	/**
+	 * get box tong hop 3 : 3 chuyen muc giai tri, suc khoe, lam dep
+	 *
+	 * @return string
+	 */
+	function get_box_group5() {
+		$aryData = array();
+		$aryData['aryCatList'] = $this->get_box_group(46, 2, 10);
+		return $this->obj->load->view('box3/congdongshop_tpl', $aryData, TRUE);
 	}
 		// Lay tin the gioi phu nu
 	function _get_box_the_gioi_phu_nu(){
@@ -635,36 +371,8 @@ class Front_lib {
 		$data['aryNewsList'] = $aryNewsList;
 		return $this->obj->load->view('box2/thegioiphunu_tpl', $data, TRUE);
 	}
-	
-		// Lay tin cong dong youshop
-	function _get_box_cong_dong_youshop(){
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 10;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,21 , $start, $limit_per_page, $filter_rules);
-		$catId=21;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('box3/congdongshop_tpl', $data, TRUE);
-	}
-			// Lay tin cong dong youshop
-	function _get_box_cong_dong_mua_sam(){
-		$filter_rules = " AND show_home=1 && news_status = 1";
-		$start = 0;
-		$limit_per_page = 10;
-		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
-		$aryNewsList = array();
-		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,34 , $start, $limit_per_page, $filter_rules);
-		$catId=34;
-		$this->obj->load->model('nny_news_catmodel');
-		$data['box_title']=$this->obj->nny_news_catmodel->getVuchivy($catId);
-		$data['aryNewsList'] = $aryNewsList;
-		return $this->obj->load->view('box3/congdongmuasam_tpl', $data, TRUE);
-	}
-				// Lay tin cong dong youshop
+				
+	// Lay tin kinh nghiem
 	function _get_box_kinh_nghiem(){
 		$filter_rules = " AND show_home=1 && news_status = 1";
 		$start = 0;

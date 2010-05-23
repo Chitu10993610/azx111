@@ -66,79 +66,28 @@ var $news_url;
 
       $results = array();
 
-      // Load the database library
-      $this->load->database();
-
-      // ///////////////////////////////////////////////////////////////////////
-      // Make a note of the current table record count
-      // ///////////////////////////////////////////////////////////////////////
-//      $this->table_record_count = $this->db->count_all( 'nny_news_cat' );
-		$query = $this->db->query('SELECT COUNT(*) as total_row FROM nny_news_cat ' . $filters);
-		$row = $query->row();
-		$this->table_record_count = $row->total_row;
-
-
-      // Filter could be an array or filter values or an SQL string.
-      $where_clause = '';
-      if ($filters) {
-         if ( is_string($filters) ) {
-            $where_clause = $filters;
-         }
-         elseif ( is_array($filters) ) {
-            // Build your filter rules
-            if ( count($filters) > 0 ) {
-               foreach ($filters as $field => $value) {
-                  $filter_list[] = " $field = '$value' ";
-               }
-               $where_clause = ' WHERE ' . join(' AND ', $filter_list );
-            }
-         }
-
-      }
-
       $limit_clause = '';
       if ($count) {
-         if ($count) {
+         if ($start) {
             $limit_clause = " LIMIT $start, $count ";
          }
          else {
-            $limit_clause = " LIMIT $start ";
+            $limit_clause = " LIMIT $count ";
          }
       }
 
       // Build up the SQL query string and run the query
-      $sql = 'SELECT * FROM nny_news_cat ' . $where_clause . $limit_clause;
-
+      $sql = 'SELECT * FROM nny_news_cat c LEFT JOIN nny_news_cat_des cd ON(c.cat_id = cd.cat_id) ' . $filters . ' ORDER BY cat_order, create_date DESC' . $limit_clause;
+//echo $sql;
       $query = $this->db->query($sql);
 
       if ($query->num_rows() > 0) {
-         // ////////////////////////////////////////////////////////////////////
-         // NOTE: At this stage you could return the entire result set, like:
-         // NOTE: ...return $query->result_array();
-         // NOTE: ...The generated code loops through the result set to provide
-         // NOTE: ...the oppurtunity to provide further customisations on the
-         // NOTE: ...code (especially if you are generating in verbose mode).
-         // ////////////////////////////////////////////////////////////////////
-
-         foreach ($query->result_array() as $row)      // Go through the result set
-         {
-            // Build up a list for each column from the database and place it in
-            // ...the result set
-
-			$query_results['id']		 = $row['id'];
-			$query_results['news_title']		 = $row['news_title'];
-			$query_results['description']		 = $row['description'];
-			$query_results['news_url']		 = $row['news_url'];
-
-			$results[]		 = $query_results;
-
-
+         foreach ($query->result_array() as $row) {
+			array_push($results, $row);
          }
-
       }
-
+      
       return $results;
-
    }
 
 
@@ -391,6 +340,7 @@ var $news_url;
 		//var_dump($aryCatInfo);
 		return $aryCatInfo;				 									 
 	}
+	
 	function getVuchivy($catId){
 		$sql = "SELECT c.*, cd.* FROM nny_news_cat c, nny_news_cat_des cd WHERE c.cat_id = cd.cat_id AND cd.cat_id = " . $catId;
 		//var_dump($aryCatInfo);

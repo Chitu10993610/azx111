@@ -267,11 +267,14 @@ height:216px;
 color:#000;
 }
 
-.box1_1_2_1a_1 {
+.box1_1_2_1a_left {
 border-right:#B6BD94 solid 1px;
 width:154px;
 height:218px;
 float:left;
+}
+.box1_1_2_1a_right {
+ width:152px; height:218px; border-left:#E9F0C6 solid 1px; padding-left:2px; float:left
 }
 
 .box1_1_2_1a_2 {
@@ -754,7 +757,7 @@ padding-left:13px;
 border-bottom:#CCC solid 1px;
 padding-top:5px;
 padding-bottom:4px;
-background:url(../images/icon_shop.gif) no-repeat left center;
+background:url(../images/icon_shop.gif) no-repeat center center;
 }
 
 .box1_2_box_head_a,.bachuyenmuc {
@@ -768,7 +771,9 @@ padding:1px;
 
 .imgvip_home {
 padding:1px;
+height:95px;
 width:135px;
+background: no-repeat scroll center transparent;
 }
 .img_vip_100_70 {
 width:100px;
@@ -777,13 +782,14 @@ height:70px;
 
 .imgvip_125_95 {
 width:125px;
-height:95px;
+height:100px;
 float:left;
 }
 
 .imgvip_95_80 {
 width:95px;
 height:80px;
+background: no-repeat scroll center transparent;
 }
 .head_hautruong{
 color:#010664;

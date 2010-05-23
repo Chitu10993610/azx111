@@ -8,8 +8,7 @@
 						<div class="box2_3_bg">
 						<div class="box2_3_left">
 						<div class="box2_3_right">
-							<?=$giaitri?><?=$suckhoe?><?=$lamdep?>
-							
+							<?=$giaitri_suckhoe_lamdep?>
 						</div></div></div>
 					<!-- END BOX 2.3-->
 					<!-- BEGIN BOX 2.4-->

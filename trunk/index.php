@@ -9,6 +9,7 @@
 | For more info visit:  http://www.php.net/error_reporting
 |
 */
+	session_cache_expire(1200);
 	session_start();
 	error_reporting(E_ALL&~E_NOTICE);
 	

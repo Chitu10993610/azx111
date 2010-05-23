@@ -18,6 +18,7 @@ class Front extends Controller {
         		break;
         	case 'tin-rao':
         		$catAdId = $this->uri->segment(2, 0);
+        		break;
         	default:
         		$catId = $this->uri->segment(2, 0);
         		break;
@@ -326,10 +327,7 @@ function search() {
 		$start = 0;
 		$start = $this->uri->segment(5,0);
 		$limit_per_page = 20;
-		$catId = $this->uri->segment(2, 11);;
-		if(!is_int($catId)) {
-			$catId = 11;
-		}
+		$catId = (int)$this->uri->segment(2, 11);
 		
 		$time = 0;
 		$day = $this->input->post('day');
