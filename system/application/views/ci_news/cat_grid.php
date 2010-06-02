@@ -1,4 +1,5 @@
 <div id="content" class="narrowcolumn">
+<div class="error"><?=isset($msg)? $msg : ''?></div>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F0EFE3">
 			<tr>
 				<td bgcolor="#004E9B" height="21">
@@ -57,7 +58,7 @@
 												<?php } ?>
 											  </select></td>
 			                               
-			                                  <td width="74" height="20" align="center" bgcolor="#FFFFFF"><a href="<?=base_url()?>news/add/<?php echo $aryCat['cat_id'].'/'.$cat_type; ?>">
+			                                  <td width="74" height="20" align="center" bgcolor="#FFFFFF"><a href="<?='properties/add/'.$aryCat['cat_id']?>">
 												<img alt="Them tin cho muc nay" border="0" src="<?=base_url()?>images/i_add.gif"></a>	</td>
 			                                  <!--<td width="40" height="20" align="center" bgcolor="#FFFFFF">
 												<a href="<?=base_url()?>cat/trans/<?php echo $aryCat['cat_id']; ?>">

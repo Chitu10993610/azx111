@@ -63,32 +63,7 @@ function sconfirm(strMess,strURL){
     </div>
     <!--END HEAD -->
     <!--GEGIN MENU -->
-    <div class="menu_top_bg">
-      <div class="menu_top_left" >
-        <div class="menu_top_right" >
-          <ul class="menu_top_ul">
-                    <?php 
-						$current_cat_id =$this->uri->segment(4, 0);
-						foreach ($typemenu1 as $aryMenu) {
-						$menuid   = $aryMenu["id"];
-						$menuname   = $aryMenu["name"];
-					?>  
-          <li class="menu_top_li">  <a class="menu_top_a" <?if($menuid==$current_cat_id){?>id="vuchivy"<?} ?> href="<?=$aryMenu["url"];?>">
-            <?= $menuname ?>
-            </a>  </li>
-            <? 
-} ?>
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="#">Biểu giá quảng cáo</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>/front/contact">Liên hệ</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/thoitrang_mypham">Thời trang Mỹ phẩm & Trang sức</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/thammy_lamdep">Spa thẩm mỹ  & Làm đẹp</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/me_be">Đồ cho Mẹ & Bé</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/xe_doisong">Xe & Đời sống</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/am_thuc">Ẩm thực</a> </li>-->
-          </ul>
-        </div>
-      </div>
-    </div>
+	<?=$main_menu?>
     <div class="menu_2_bg">
       <?=$sub_menu?>
       <div style="display: none; left: 378px; top: 130px;font-size:11px" class="divPopup" id="chooseCity" onMouseOut="overlayclose('chooseCity');" onmousemove="return overlay('chon_tinh','chooseCity', 'rightbottom')" onclick="overlayclose('chooseCity');">

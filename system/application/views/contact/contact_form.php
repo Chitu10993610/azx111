@@ -1,9 +1,8 @@
 <div style="width:825px; height: auto;">
-	<div style="width:250px; height: auto; float:left; background:#CCCCCC">	
-	<img src="<?=site_url()?>/images/IMAGE/quangcao.gif" />
-	</div>
-	
-	<div style="width:570xp;height: auto; margin-left:5px;float:right">
+	<div style="border-left:1px solid #CCCCCC;
+float:left;
+height:auto;
+padding-left:5px;">
 <div style="padding:20px;">
 	
 <? if($dataConf['guide_image']) {?>

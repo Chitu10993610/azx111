@@ -21,20 +21,18 @@ $action_url = site_url() .$site_name. "cau-hinh";
 echo $contact_info;
 ?>
 	</div>
-	
-<!--	<h3><a href="javascript:divToogle('guide_info');">Thông tin giới thiệu</a></h3>
-	<?php if (isset($msg)) { echo "<p class=\"error\" id=\"msg\">$msg</p>"; } ?>
-	<div id="guide_info">
-		<?php
-echo $guide_info;
-?>
-	</div>-->
-
 	<h3><a href="javascript:divToogle('service_info');">Báo giá quảng cáo</a></h3>
 	<?php if (isset($msg)) { echo "<p class=\"error\" id=\"msg\">$msg</p>"; } ?>
 	<div id="service_info">
 		<?php
 echo $service_info;
+?>
+	</div>
+		<h3><a href="javascript:divToogle('guide_info');">Cấu hình chung</a></h3>
+	<?php if (isset($msg)) { echo "<p class=\"error\" id=\"msg$msg</p>"; } ?>
+	<div id="guide_info">
+		<?php
+echo $guide_info;
 ?>
 	</div>
 	</form>

@@ -55,7 +55,7 @@ function checkFrmLoaiHang()
                                             Thuộc nhóm :</div></td>
                                           <td>
 				<select name="parent_id" style="width:200px;">
-				 <option value="0">----------Chọn nhóm menu----------</option>
+				 <option value="0">----------Chọn nhóm hoặc chuyên mục cha----------</option>
 			<?php 
 			
 				foreach ($aryCatList as $aryCat) {

@@ -16,11 +16,11 @@ Công ty chủ quản : Công ty TNHH Quảng cáo và truyền thông việt<br
                       Email: tapchiphunu@gmail.com // www.tapchiphunu.net - 
                       Liên hệ quyền admin : buixuanluyen @gmail.com
 	</div>
-	<div align="center">
+	<!--<div align="center">
 	      <a href=""><a href="ymsgr:sendim?quythocong"><img border="0" vspace="3" src="http://opi.yahoo.com/online?u=chutruonggiang7777&amp;m=g&amp;t=2&amp;l=us"></a>
 	      <a href=""><a href="ymsgr:sendim?quythocong"><img border="0" vspace="3" src="http://opi.yahoo.com/online?u=vuchivy141&amp;m=g&amp;t=2&amp;l=us"></a>
 	      <a href=""><a href="ymsgr:sendim?quythocong"><img border="0" vspace="3" src="http://opi.yahoo.com/online?u=chutruonggiang7777&amp;m=g&amp;t=2&amp;l=us"></a>
 		  
-	</div>
+	</div>-->
 
 </div>

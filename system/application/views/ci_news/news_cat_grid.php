@@ -1,4 +1,5 @@
 <div id="content" class="narrowcolumn">
+<div class="error"><?=isset($msg)? $msg : ''?></div>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F0EFE3">
 			<tr>
 				<td bgcolor="#004E9B" height="21">
@@ -30,8 +31,8 @@
 			                                  <td bgcolor="#D7D7D7" width="74" align="center"><b>Thêm bài viết </b></td>
 			                                  <td height="20" bgcolor="#D7D7D7" width="40" align="center">
 												<b>Sửa</b></td>
-			                                  <!--<td height="20" bgcolor="#D7D7D7" width="40" align="center">
-												<b>Xoá</b></td>-->
+			                                  <td height="20" bgcolor="#D7D7D7" width="40" align="center">
+												<b>Xoá</b></td>
 			                                  <td height="20" bgcolor="#D7D7D7" width="62" align="center" nowrap>
 												<b>ID</b></td>
 												<td height="20" bgcolor="#D7D7D7" width="62" align="center" nowrap>
@@ -70,9 +71,9 @@
 			                                  
 												<a href="./news_cat/modify/<?php echo $aryCat['cat_id']; ?>">
 												<img alt="Sua Nhom tin nay" border="0" src="images/control.gif" width="20" height="20"></a>												</td>
-			                                  <!--<td width="40" height="20" align="center" bgcolor="#FFFFFF">
+			                                  <td width="40" height="20" align="center" bgcolor="#FFFFFF">
 												<a href="javascript:sconfirm('Ban co muon xoa nhom tin nay khong?','./news_cat/delete/<?php echo $aryCat['cat_id']; ?>')">
-												<img alt="Xoa Nhom tin nay" border="0" src="images/login_icon_false.gif" width="18" height="18"></a></td>-->
+												<img alt="Xoa Nhom tin nay" border="0" src="images/login_icon_false.gif" width="18" height="18"></a></td>
 			                               		<td width="62" height="20" align="center" bgcolor="#FFFFFF">
 													<?php echo $aryCat['cat_id']; ?>
 			                               		</td>

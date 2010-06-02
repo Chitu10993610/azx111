@@ -61,46 +61,9 @@ function sconfirm(strMess,strURL){
     </div>
     <!--END HEAD -->
      <!--GEGIN MENU -->
-    <div class="menu_top_bg">
-      <div class="menu_top_left" >
-        <div class="menu_top_right" >
-          <ul class="menu_top_ul">
-                    <?php 
-       $current_cat_id =$this->uri->segment(4, 0);
-foreach ($typemenu1 as $aryMenu) {
-
-$menuid   = $aryMenu["id"];
-$menuname   = $aryMenu["name"];
-?>  
-          <li class="menu_top_li">  <a class="menu_top_a" <?if($menuid==$current_cat_id){?>id="vuchivy"<?} ?> href="<?=$aryMenu["url"];?>">
-            <?= $menuname ?>
-            </a>  </li>
-            <? 
-} ?>
-          </ul>
-        </div>
-      </div>
-    </div>
+	<?=$main_menu?>
     <div class="menu_2_bg">
       <?=$sub_menu?>
-      <?php if(!$sub_menu){ ?>
-      <div class="menu_2" >
-        <ul class="menu_2_ul" >
-          <?php 
-			  $current_cat_id =$this->uri->segment(4, 0);
-          foreach ($typemenu2 as $aryMenu) {
-			 
-				$menuid   = $aryMenu["id"];
-				$menuname   = $aryMenu["name"];
-		?>
-          <li class="menu_2_li"> <a class="menu_2_a" <?if($menuid==$current_cat_id){?>id="vuchivy"<?}?> href="<?=$aryMenu["url"];?>">
-            <?=$menuname ?>
-            </a> </li>
-          <?			 
-			 } ?>
-        </ul>
-
-       </div>
        <div id="vietbai">
 			<a class="menu_2_a" href="<?=site_url()?>front/register">Đăng ký</a> | 
 			<a class="menu_2_a" href="<?=site_url()?>news/add">Viết bài</a>
@@ -112,7 +75,6 @@ $menuname   = $aryMenu["name"];
 				<div class="seo_button" ><input type="image" src="<?=site_url()?>images/timkiem.gif"></div>
 				</form>
 			</div>
-      <? }?>
       <div style="display: none; left: 378px; top: 130px;font-size:11px" class="divPopup" id="chooseCity" onMouseOut="overlayclose('chooseCity');" onmousemove="return overlay('chon_tinh','chooseCity', 'rightbottom')" onclick="overlayclose('chooseCity');">
         <div align="center"><a href="./front/chon_city/0">- TOÀN QU�?C -</a></div>
         <div style="float:left; width:90px; margin-left:5px;">
