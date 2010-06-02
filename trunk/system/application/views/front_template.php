@@ -1,4 +1,4 @@
-<?php  // get the view's language correct
+<?php // get the view's language correct
 	$language = $this->session->userdata('ua_language');
 	if ( empty($language) ) {
 		if ( $this->config->item('ua_multi_language') ) {
@@ -63,64 +63,20 @@ function sconfirm(strMess,strURL){
     </div>
     <!--END HEAD -->
     <!--GEGIN MENU -->
-    <div class="menu_top_bg">
-      <div class="menu_top_left" >
-        <div class="menu_top_right" >
-          <ul class="menu_top_ul">
-                    <?php 
-$current_cat_id =$this->uri->segment(4, 0);
-foreach ($typemenu1 as $aryMenu) {
-
-$menuid   = $aryMenu["id"];
-$menuname   = $aryMenu["name"];
-?>  
-          <li class="menu_top_li">  <a class="menu_top_a" <?if($menuid==$current_cat_id){?>id="vuchivy"<?} ?> href="<?=$aryMenu["url"];?>">
-            <?= $menuname ?>
-            </a>  </li>
-            <? 
-} ?>
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="#">Biểu giá quảng cáo</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>/front/contact">Liên hệ</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/thoitrang_mypham">Thời trang Mỹ phẩm & Trang sức</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/thammy_lamdep">Spa thẩm mỹ  & Làm đẹp</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/me_be">Đồ cho Mẹ & Bé</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/xe_doisong">Xe & Đời sống</a> </li>-->
-<!--            <li class="menu_top_li"> <a class="menu_top_a" href="<?=site_url()?>front/am_thuc">Ẩm thực</a> </li>-->
-          </ul>
-        </div>
-      </div>
-    </div>
+    <?=$main_menu?>
     <div class="menu_2_bg">
       <?=$sub_menu?>
-      <?php if(!$sub_menu){ ?>
-      <div class="menu_2" >
-        <ul class="menu_2_ul" >
-          <?php 
-			foreach ($typemenu2 as $aryMenu) {
-			 
-				$menuid   = $aryMenu["id"];
-				$menuname   = $aryMenu["name"];
-		?>
-          <li class="menu_2_li"> <a class="menu_2_a" href="<?=$aryMenu["url"];?>">
-            <?=$menuname ?>
-            </a> </li>
-          <?			 
-			 } ?>
-        </ul>
-
-       </div>
-       <div id="vietbai">
-			<a class="menu_2_a" href="<?=site_url()?>front/register">Đăng ký</a> | 
-			<a class="menu_2_a" href="<?=site_url()?>news/add">Viết bài</a>
-		</div>
-       			<div class="seo">
-				<div class="raovat"><a target="_blank" href="http://tapchithuongmai.net" class="menu_2_a" style=""><img src="<?=site_url()?>images/raovattd.gif"></a></div>
-				<form name="search" action="<?=base_url()?>front/search" method="POST"> 	
-				<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" id="keyword"/></div> 
-				<div class="seo_button" ><input type="image" src="<?=site_url()?>images/timkiem.gif"></div>
-				</form>
-			</div>
-      <? }?>
+	<div id="vietbai">
+		<a class="menu_2_a" href="<?=site_url()?>front/register">Đăng ký</a> | 
+		<a class="menu_2_a" href="<?=site_url()?>news/add">Viết bài</a>
+	</div>
+			<div class="seo">
+		<div class="raovat"><a target="_blank" href="http://tapchithuongmai.net" class="menu_2_a" style=""><img src="<?=site_url()?>images/raovattd.gif"></a></div>
+		<form name="search" action="<?=base_url()?>front/search" method="POST"> 	
+		<div class="seo_input"><input type="text"  name="keyword" maxlength="50px" id="keyword"/></div> 
+		<div class="seo_button" ><input type="image" src="<?=site_url()?>images/timkiem.gif"></div>
+		</form>
+	</div>
       <div style="display: none; left: 378px; top: 130px;font-size:11px" class="divPopup" id="chooseCity" onMouseOut="overlayclose('chooseCity');" onmousemove="return overlay('chon_tinh','chooseCity', 'rightbottom')" onclick="overlayclose('chooseCity');">
         <div align="center"><a href="./front/chon_city/0">- TOÀN QUỐC -</a></div>
         <div style="float:left; width:90px; margin-left:5px;">

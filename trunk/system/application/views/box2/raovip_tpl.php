@@ -17,7 +17,11 @@ if($n) foreach ($ci_properties_list as $ci_properties) {
 		}
    }?>
 <div align="center" class="box2_5_box" >
-		<div style="background: transparent url(<?php echo $img_name;?>) no-repeat scroll center center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; border:#CCCCCC solid 1px; " class="itemImg"><a href="<?=site_url().'tin-rao/'.$ci_properties['property_type'].'/'.$ci_properties['id']?>/<?=$ci_properties['name_sef']?>" class="itemTitle" id="vip1796432"><img height="80" border="0" width="125" src="<?=base_url()?>images/spacer.gif" title="Xem ảnh"></a></div>
+		<div style="background: transparent url(<?php echo $img_name;?>) no-repeat scroll center center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; border:#CCCCCC solid 1px; " class="itemImg">
+			<a href="<?=site_url().'tin-rao/'.$ci_properties['property_type'].'/'.$ci_properties['id']?>/<?=$ci_properties['name_sef']?>" class="itemTitle" id="vip1796432">
+				<img height="80" border="0" width="125" src="<?=base_url()?>images/spacer.gif" title="Xem ảnh">
+			</a>
+			</div>
 		<div><a><?=price_format($ci_properties['price']) . ' ' . $ci_properties['currency']?> </a></div>
 		</div>
 <?}?>

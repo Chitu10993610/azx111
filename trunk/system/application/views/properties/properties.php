@@ -25,7 +25,7 @@
 				<th width="50">Phạm vi</th>
 				<th width="100">Giá</th>
 
-<!--				<th>Distance from Center</th>-->
+				<th>Người đăng</th>
 				<th>Sửa</th>
 				<th>Xóa</th>
 			</tr>
@@ -47,11 +47,12 @@
     case 3:echo"Cần thuê";
     break;
     }?></td>
-				<td style="text-align:left;"><?=$ci_properties['name']?></td>
+				<td style="text-align:left;" ><a <?php if($ci_properties["status"]) echo ("class='lnkGray'") ?> href = "<?= $modify_url."/".$ci_properties["id"]; ?>" ><?=$ci_properties['name']?></a></td>
 				<td><?=$ci_properties['province_name']?></td>
 				<td><?=price_format($ci_properties['price'])?> <?=$ci_properties['currency']?><?=($ci_properties['m2'])? "/m<sup>2</sup>":''?> <?=($ci_properties['is_negotiate'])? "(Cho Thương Lượng)":''?></td>
+				<td class="edit"><?=$ci_properties['create_name']?></td>
 				<td class="edit">
-				<a href = "<?= $modify_url."/".$ci_properties["id"]; ?>" ><?=img('images/i_edit.gif')?></a>
+					<a href = "<?= $modify_url."/".$ci_properties["id"]; ?>" ><?=img('images/i_edit.gif')?></a>
 					</td>
 				<td class="delete" nowrap="nowrap">
 				<a onclick="if (!confirm('Are you sure you want to delete selected items?')) return false;" href = "<?= $delete_url."/".$ci_properties["id"]; ?>" ><?=img('images/i_delete.gif')?></a>

@@ -13,7 +13,7 @@ foreach ($aryCatList as $aryCat) {?>
 			</a>
 		</div>
 </div>
-<div style="height: 45px; font-weight:bold;text-align: left; overflow: hidden;"><a href="<?=base_url()?>tin-tuc/<?=$aryNews["cat_id"]?>/<?=$aryNews["news_id"]?>/<?=$aryNews['news_title_sef']?>"  class="box2_1_contet"><?=$this->front_lib->cut_string($aryNews["intro_content"], 60)?></a></div>
+<div style="height: 45px; font-weight:bold;text-align: left; overflow: hidden;"><a href="<?=base_url()?>tin-tuc/<?=$aryNews["cat_id"]?>/<?=$aryNews["news_id"]?>/<?=$aryNews['news_title_sef']?>"  class="box2_1_title"><?=$this->front_lib->cut_string($aryNews["intro_content"], 60)?></a></div>
 	<?}?>
 	</div>
 <?}?>

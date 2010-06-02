@@ -60,6 +60,7 @@ $action_url = site_url() .$site_name. "/properties/$action/";
 <input type='hidden' name='id' id='id' value='<?= $id; ?>' >
 <?php echo validation_errors(); ?>
 <?php if(isset($error)) echo $error;?>
+<?=$property_type?>
 <table width="733" border="0" cellpadding="5" cellspacing="5">
   <tr>
     <td width="163"><label for="name">Tiêu đề tin</label> </td>

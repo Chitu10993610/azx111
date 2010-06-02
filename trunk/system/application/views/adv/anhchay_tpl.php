@@ -20,9 +20,18 @@ slidebgcolor="#EAEAEA"
 //Specify the slider's images
 var leftrightslide=new Array()
 var finalslide=''
-<?foreach ($ads_list as $key=>$ci_ads) { ?>
-leftrightslide[<?=$key?>]='<a href="<?=$ci_ads['ads_url']?>" target="_blank"><img border="0" height="<?=$ci_ads['ads_height']?>" width="<?=$ci_ads['ads_width']?>" src="<?=base_url().'images/adv/'.$ci_ads['image']?>" /></a>'
-<?}?>
+<?foreach ($ads_list as $key=>$ci_ads) { 
+	if($ci_ads['is_flash']) {
+	?>
+	leftrightslide[<?=$key?>]='<a href="<?=$ci_ads['ads_url']?>" target="_blank"><embed height="<?=$ci_ads['ads_height']?>" width="<?=$ci_ads['ads_width']?>" loop="true" wmode="transparent" play="true" src="<?=base_url().'images/adv/'.$ci_ads['image']?>" type="application/x-shockwave-flash"/></a>'
+	<?php
+}
+else {
+	?>
+	leftrightslide[<?=$key?>]='<a href="<?=$ci_ads['ads_url']?>" target="_blank"><img border="0" height="<?=$ci_ads['ads_height']?>" width="<?=$ci_ads['ads_width']?>" src="<?=base_url().'images/adv/'.$ci_ads['image']?>" /></a>'	
+	<?php
+	}
+}?>
 //Specify gap between each image (use HTML):
 var imagegap=" "
 

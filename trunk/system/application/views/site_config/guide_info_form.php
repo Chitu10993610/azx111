@@ -1,26 +1,24 @@
-<?php 
-//	$this->lang->load('userauth', $this->session->userdata('ua_language')); 
-	include_once("js/fckeditor/fckeditor.php");
-	$sBasePath = $_SERVER['PHP_SELF'] ;
-	$sBasePath = substr( $sBasePath, 0, strpos( $sBasePath, "index" ) ) ;
-	$sBasePath = $sBasePath.'js/fckeditor/';
-
-	if (isset($msg)) { echo "<p class=\"error\">$msg</p>"; }
-
-?>
-	<div>
+<div>
 		<table width="700" border="0" cellpadding="5" cellspacing="5">
-
   <tr>
-    <td colspan="2" >
-    <?php
-		$oFCKeditor = new FCKeditor('information');
-		$oFCKeditor->BasePath = $sBasePath;
-		$oFCKeditor->Height = 300;
-		$oFCKeditor->Config['SkinPath'] = $sBasePath . 'editor/skins/office2003/' ;
-		$oFCKeditor->Value = $information;
-		$oFCKeditor->Create() ;
-	?>
+  	<td>
+  	Số video: </td>
+    <td>
+    <input type="text" name="number_video" maxlength="3" value="<?=$number_video?>"> (Là một số nguyên, vd:30)
+	</td>
+  </tr>
+  <tr>
+  	<td>
+  	Số tin phần Chuyện gia đình & công sở: </td>
+    <td>
+    <input type="text" name="number_chuyen_gd" maxlength="3" value="<?=$number_chuyen_gd?>"> (Là một số nguyên, vd:10)
+	</td>
+  </tr>
+  <tr>
+  	<td>
+  	Số tin phần Chia sẻ: </td>
+    <td>
+    <input type="text" name="number_chiase" maxlength="3" value="<?=$number_chiase?>"> (Là một số nguyên, vd:6)
 	</td>
   </tr>
   <tr>
