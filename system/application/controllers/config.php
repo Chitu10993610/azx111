@@ -197,6 +197,9 @@ class Config extends Controller {
 		$data['city']		= $this->input->post('city', TRUE);
 		$data['state']		= $this->input->post('state', TRUE);
 		$data['zip']		= $this->input->post('zip', TRUE);
+		$data['number_video']		= (int)$this->input->post('number_video', TRUE);
+		$data['number_chuyen_gd']		= (int)$this->input->post('number_chuyen_gd', TRUE);
+		$data['number_chiase']		= (int)$this->input->post('number_chiase', TRUE);
 		$data['create_user']	= $this->session->userdata('userid');
 		$data['site_id']	= $this->site_id;
 

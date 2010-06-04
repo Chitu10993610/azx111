@@ -17,6 +17,34 @@ class Front_lib {
 		$dirname = ($path_parts['dirname'] != '.') ? $path_parts['dirname'].'/' : '';
  		return $dirname.'.thumbs/.'.$path_parts['basename'];
 	}
+	
+	/**
+	 * get main menu
+	 *
+	 * retun main menu
+	 */
+	function get_main_menu (){
+		//get menu 1
+    	$this->obj->load->model('menu_model');
+    	$filters = ' WHERE parent_id = 4';
+    	$data['typemenu1']=$this->obj->menu_model->find($filters);
+    	
+		return $this->obj->load->view('boxs/main_menu', $data, TRUE);
+	}
+	
+	/**
+	 * get sub menu
+	 *
+	 * retun sub menu
+	 */
+	function get_sub_menu (){
+		//get menu 1
+    	$this->obj->load->model('menu_model');
+    	$filters = ' WHERE parent_id = 15 ';
+    	$data['typemenu']=$this->obj->menu_model->find($filters);
+    	
+		return $this->obj->load->view('boxs/sub_menu', $data, TRUE);
+	}
 
 	//build left front page
 	function _build_left_front(&$data) {
@@ -74,8 +102,10 @@ class Front_lib {
 
 		//build box3 front page
 	function _build_box3_front(&$data) {
-		$arydata['congdong'] = $this->get_box_group5();
-		$arydata['kinhnghiem'] = $this->_get_box_kinh_nghiem();
+		$this->obj->load->model('hs_configmodel');
+		$dataConf = $this->obj->hs_configmodel->findAll();
+		$arydata['congdong'] = $this->get_box_group5($dataConf[0]['number_chuyen_gd']);
+		$arydata['kinhnghiem'] = $this->_get_box_kinh_nghiem($dataConf[0]['number_chiase']);
 		
 		$data['box3_area'] .= $this->obj->load->view('boxs/box3_tpl', $arydata, TRUE);
 	}	
@@ -355,28 +385,32 @@ class Front_lib {
 	 *
 	 * @return string
 	 */
-	function get_box_group5() {
+	function get_box_group5($limit = 10) {
 		$aryData = array();
-		$aryData['aryCatList'] = $this->get_box_group(46, 2, 10);
+		$aryData['aryCatList'] = $this->get_box_group(46, 2, $limit);
 		return $this->obj->load->view('box3/congdongshop_tpl', $aryData, TRUE);
 	}
 		// Lay tin the gioi phu nu
 	function _get_box_the_gioi_phu_nu(){
+		$this->obj->load->model('nny_news_catmodel', 'catModel');
 		$filter_rules = " AND show_home=1 && news_status = 1";
 		$start = 0;
 		$limit_per_page = 10;
 		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
+		
+		$catInfo = $this->obj->catModel->getCatInfoBytId(19);
+
 		$aryNewsList = array();
 		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,19 , $start, $limit_per_page, $filter_rules);
 		$data['aryNewsList'] = $aryNewsList;
+		$data['cat_name'] = $catInfo['cat_name'];
 		return $this->obj->load->view('box2/thegioiphunu_tpl', $data, TRUE);
 	}
 				
 	// Lay tin kinh nghiem
-	function _get_box_kinh_nghiem(){
+	function _get_box_kinh_nghiem($limit_per_page = 6){
 		$filter_rules = " AND show_home=1 && news_status = 1";
 		$start = 0;
-		$limit_per_page = 6;
 		$this->obj->load->model('ci_newsmodel');                  // Instantiate the model
 		$aryNewsList = array();
 		$aryNewsList = $this->obj->ci_newsmodel->getNewsList(0,35 , $start, $limit_per_page, $filter_rules);

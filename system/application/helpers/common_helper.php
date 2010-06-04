@@ -7,7 +7,7 @@
  */function access($perm, $redirect = false, $redirect_uri = 'user/auth_error') {
 		$result = false;
 		$result = ($_SESSION['userdata']['userid'] == 1 || (is_array($_SESSION['userdata']['perm']) && in_array($perm, $_SESSION['userdata']['perm'])));
-		if($redirect) {
+		if(!$result && $redirect) {
 			redirect($redirect_uri); 
 			exit;
 		}

@@ -7,7 +7,10 @@ class Front extends Controller {
 //		$data['user1_are'] = ''; 
 //        $data['feature_are'] = '';
         
-        global $catId, $catAdId;
+        global $catId, $catAdId, $curMenuid;
+		$curMenuid =$this->uri->segment(3, 0);
+		$curMenuid = (int)trim($curMenuid, 'm');
+					
         switch ($this->uri->segment(1, 0)) {
         	case 'tim-kiem':
         		$catId = 'search';
@@ -24,6 +27,7 @@ class Front extends Controller {
         		break;
         }
 	}
+	
 	function index() {
 		$page_req = 'front/index';
 		$start = (int)$this->uri->segment(3, 0);
@@ -33,6 +37,8 @@ class Front extends Controller {
 	//       $data['feature_are'] = '';
 		$this->front_lib->_build_box1_front($data);    	
 		$this->_display($page_req, $data);
+		
+//		if(CACHE_ON) $this->output->cache(2);
 	}
 	/**
 	 * gioi thieu chung
@@ -53,7 +59,7 @@ class Front extends Controller {
 		$this->_display_raovat('boxs/login_tpl', $data);
 	}
 	/**
-	 * dich vá»¥
+	 * dich vu
 	 *
 	 */
 	function dichvu() {
@@ -68,111 +74,12 @@ class Front extends Controller {
 	}
 	
 	// Đăng nhập
-		function dangnhap(){
+	function dangnhap(){
       		
-			$arydata['title'] = 'Thành viên đăng nhập';
-			$arydata['content'] = $this->load->view('boxs/login_tpl', $data, TRUE);
-			$data['box1_area'] .= $this->load->view('boxs/box1_tpl', $arydata, TRUE);
+		$arydata['title'] = 'Thành viên đăng nhập';
+		$arydata['content'] = $this->load->view('boxs/login_tpl', $data, TRUE);
+		$data['box1_area'] .= $this->load->view('boxs/box1_tpl', $arydata, TRUE);
 		$this->_display($page_req, $data);
-	}
-	/**
-	 * list rent or sell
-	 *
-	 */
-	function thoitrang(){
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='12'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='12' AND province=$city";
-		}
-		$data['title'] = "Thời trang";
-		$data['type'] = '';
-		//$filter_rules .= 'province = '.$_SESSION['city'];
-		$this->_get_list_rao_vat($filter_rules, $data);	
-	}
-function mypham_trangsuc(){
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='17'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='17' AND province=$city";
-		}
-		$data['title'] = "Trang sức";
-		$data['type'] = '';
-		
-		//$filter_rules .= 'province = '.$_SESSION['city'];
-		$this->_get_list_rao_vat($filter_rules, $data);	
-	}
-function khac(){
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='18'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='18' AND province=$city";
-		}
-		$data['title'] = "Khác";
-		$data['type'] = '';
-
-		//$filter_rules .= 'province = '.$_SESSION['city'];
-		$this->_get_list_rao_vat($filter_rules, $data);	
-	}	
-	function thammy_lamdep() {
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='13'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='13' AND province=$city";
-		}
-		$data['title'] = "Thẩm mỹ - Làm đẹp";
-		$data['type'] = '';
-
-		$this->_get_list_rao_vat($filter_rules, $data);
-		
-	}
-	function me_be() {
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='14'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='14' AND province=$city";
-		}
-		$data['title'] = "Mẹ và bé";
-		$data['type'] = '';
-
-		$this->_get_list_rao_vat($filter_rules, $data);
-		
-	}
-	function xe_doisong() {
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='15'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='15' AND province=$city";
-		}
-		$data['title'] = "Xe - Đời sống";
-		$data['type'] = '';
-
-		$this->_get_list_rao_vat($filter_rules, $data);
-		
-	}
-	function am_thuc() {
-		if(!$_SESSION['city']){
-		$filter_rules = "WHERE property_type='16'";
-		}
-		else {
-			$city=$_SESSION['city'];
-			$filter_rules = "WHERE property_type='16' AND province=$city";
-		}
-		$data['title'] = "Ẩm thực";
-		$data['type'] = 0;
-		$this->_get_list_rao_vat($filter_rules, $data);
 		
 	}
 	
@@ -183,7 +90,10 @@ function khac(){
 		$filter_rules .= $_SESSION['city'] ? " AND province = ".$_SESSION['city'] : '';
 		
 		$data['title'] = "Tin rao";
+		$data['cat_id'] = $catAdId;
 		$this->_get_list_rao_vat($filter_rules, $data);
+		if(CACHE_ON) $this->output->cache(1);
+		
 	}
 	
 	function ha_noi() {
@@ -202,26 +112,6 @@ function khac(){
 		$this->_get_list_rao_vat($filter_rules, $data);
 		
 	}
-	/**
-	 * list rent or sell
-	 *
-	 */
-	function canmua() {
-		$filter_rules 	= " WHERE type='2' ";
-		$data['title']	= "Danh sÃ¡ch nhÃ  cáº§n bÃ¡n";
-		$data['type'] 	= 2;
-		$this->_get_list_house($filter_rules, $data);
-	}
-	/**
-	 * list rent or sell
-	 *
-	 */
-	function nhachothue() {
-		$filter_rules = " WHERE type='1' ";
-		$data['title'] = "Danh sÃ¡ch nhÃ  muá»‘n cho thuÃª";
-		$data['type'] = 1;
-		$this->_get_list_house($filter_rules, $data);
-	}	
 	
 	/**
 	 * ./front/chon_city/<?=$lookupid?>
@@ -303,6 +193,7 @@ function search() {
 		$data['title'] = isset($data['ci_properties']['name']) ? $data['ci_properties']['name'] : '';
 		 //$data['ads_right_rv'] = $this->front_lib->get_box_adv('adv/right_rv_tpl', 'right_raovat', 10);		
 		$this->_display_raovat($page_req, $data);
+		if(CACHE_ON) $this->output->cache(10);
 	}
 	function mapit() {
 		$data['geocode'] = base64_decode($this->input->post('geo', TRUE));
@@ -366,48 +257,7 @@ function search() {
 		$data['title'] = 'Danh sách tin tức';
 			
 		$this->_display_news($page_req, $data);
-	}
-	//list danh ba web
-	function webs() {
-		
-		$page_req = 'front/webs';
-		
-		$start = $this->uri->segment(4,0);
-		$limit_per_page = 20;
-		$newsType = $this->uri->segment(3, 'news');
-	//exit($newsType);
-		$catId = 0;
-		
-		$this->load->model('ci_websmodel');                  
-	//Instantiate the model
-		
-		$aryList = array();
-		$aryList = $this->ci_websmodel->findByFilter($filter, $start, $limit_per_page);
-		
-		$data['aryList'] = $aryList;
-		$data['numOfNews'] = $this->ci_newsmodel->table_record_count;
-		$data['cid'] = $catId;
-		
-		$this->load->library('pagination');
-		$this->load->helper('url');
-		
-		$config['total_rows']   = $this->ci_newsmodel->table_record_count;
-		$config['per_page']     = $limit_per_page;
-		$config['uri_segment'] = 3;
-		$config['num_links'] = 3;
-		$config['base_url'] = base_url().'front/webs/'.$newsType;
-		
-		$this->pagination->initialize($config);
-		
-
-		$data['title'] = 'Danh báº¡ web';
-		$arydata['title'] = '<span style="text-align:left; padding-top:0;"><b>Danh báº¡ web</b></span>';
-		$data['page_links'] = $this->pagination->create_links();
-		
-		$arydata['content'] = $this->load->view($page_req, $data, TRUE);
-        $data['user1_are'] .= $this->load->view('boxs/box', $arydata, TRUE);
-			
-		$this->_display('', $data);
+		if(CACHE_ON) $this->output->cache(1);
 	}
 	
 	function news() {
@@ -431,38 +281,8 @@ function search() {
 		$data['page_description'] = addslashes($data['aryNewsInfo']['intro_content']);
 		$data['ads_left'] = $this->front_lib->get_box_adv('adv/left_tpl', 'left', 10);
 		$this->_display($page_req, $data);
-	}
-
-	//download document
-	function download() {
-		$page_req = 'front/download_tpl';
-		$cat_id = $this->uri->segment(3,0);
-		$start = $this->uri->segment(4,0);
-		$limit_per_page = 20;
 		
-		$this->load->library('pagination');
-		$this->load->helper('url');
-		$config['total_rows']   = $this->ci_newsmodel->table_record_count;
-		$config['per_page']     = $limit_per_page;
-		$config['uri_segment'] = 3;
-		$config['num_links'] = 3;
-		$config['base_url'] = base_url().'front/download/'.$cat_id;
-		
-		$this->pagination->initialize($config);
-		
-
-		$data['title'] = 'Download tÃ i liá»‡u';
-		$arydata['title'] = '<span style="text-align:left; padding-top:0;"><b>Download tÃ i liá»‡u</b></span>';
-		$data['page_links'] = $this->pagination->create_links();
-			
-		$this->load->model('iht_upload_model');
-		// Instantiate the model
-		$filter = ' WHERE cat_id = '.$cat_id;
-		$data['record_list'] = $this->iht_upload_model->findByFilter($filter, $start, $limit);  // Send the retrievelist msg
-		$arydata['content'] = $this->load->view($page_req, $data, TRUE);
-        $data['user1_are'] .= $this->load->view('boxs/box', $arydata, TRUE);
-		
-		$this->_display('', $data);
+		if(CACHE_ON) $this->output->cache(10);
 	}
 	
 	function news_print() {
@@ -495,32 +315,15 @@ function search() {
 		
 		//get adv
 		$this->load->model('ci_adsmodel');
-      	
-//		$filter = " WHERE status_flg = 1 AND position='Bottom'";
-//    	$data['bottom_ads'] = $this->ci_adsmodel->findByFilter($filter, 0, 1);
 		
-    	// List Tinh
-/*		$this->load->model('iht_province_model');
-		$filter = 'where id_area =3';
-		$data['provinceOption3']=$this->iht_province_model->findByFilter($filter);
-		$filter = 'where id_area =2';
-		$data['provinceOption2']=$this->iht_province_model->findByFilter($filter);
-		$filter = 'where id_area =1';
-		$data['provinceOption1']=$this->iht_province_model->findByFilter($filter);*/
-		
-    	//get menu 1
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 4';
-    	$data['typemenu1']=$this->menu_model->find($filters);
+    	//get main menu
+    	$data['main_menu'] = $this->front_lib->get_main_menu();
+    	$data['sub_menu'] = $this->front_lib->get_sub_menu();
 		
     	//get menu tin tuc
 		//get menu 1
-    	$this->load->model('nny_catmodel');
-    	$data['catID']=$this->menu_model->find($filters);
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 15';
-    	$data['typemenu2']=$this->menu_model->find($filters);
-		//build box1 area
+//    	$this->load->model('nny_catmodel');
+//    	$data['catID']=$this->menu_model->find($filters);
 				
 		//get header banner
     	$data['ads_header'] = $this->front_lib->get_box_adv('adv/header_tpl', 'header', 2);
@@ -543,8 +346,8 @@ function search() {
 //get list housing
 	function _get_list_rao_vat($filter_rules, $data) {
 //		$page_req = 'front/house_sell_tpl'
-		
-		$start = $this->uri->segment(5,0);
+		global $curMenuid;
+		$start = $this->uri->segment(4,0);
 		$limit_per_page = 24;
 		$filter_rules .= ' AND p.status = 1 ';
 		
@@ -556,9 +359,9 @@ function search() {
 		
 		$config['total_rows']   = $this->ci_propertiesmodel->table_record_count;
 		$config['per_page']     = $limit_per_page;
-		$config['uri_segment'] = 3;
+		$config['uri_segment'] = 4;
 		$config['num_links'] = 5;
-		$config['base_url'] = $data['type'] ? base_url().'front/nhachothue':base_url().'front/nhaban';
+		$config['base_url'] = 'tin-rao/'.$data['cat_id'].'/m'.$curMenuid;
 		
 		$this->pagination->initialize($config);
 		
@@ -735,26 +538,15 @@ function search() {
 		
 		//$data['current_menu_id'] = $this->uri->segment(3);
 //		$data['main_menu'] = $this->front_lib->build_menu($data);
-
-		//get menu tin tuc
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 0 ';
-    	$data['typemenu']=$this->menu_model->find($filters);
-		//build box1 area
 		
 		$data['title'] .= TITLE_DEFAUL;
 
 		//Get info to steer template adv
 		$data['adv'] = $page_req;
-		    	//get menu 1
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 4';
-    	$data['typemenu1']=$this->menu_model->find($filters);
-		//get menu tin tuc
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 15';
-    	$data['typemenu2']=$this->menu_model->find($filters);
-		//build box1 area
+		
+		//get main menu
+    	$data['main_menu'] = $this->front_lib->get_main_menu();
+    	$data['sub_menu'] = $this->front_lib->get_sub_menu();
 		
 		//get header banner
     	$data['ads_header'] = $this->front_lib->get_box_adv('adv/header_tpl', 'header', 2);
@@ -776,6 +568,7 @@ function search() {
 			$arydata['content'] = $data['content'];
 			$data['content'] = $this->load->view('boxs/box', $arydata, TRUE);	
 		}
+		
 		$data['title'] .= TITLE_DEFAUL;
 
 		//get adv
@@ -792,11 +585,9 @@ function search() {
 		$filter = 'where id_area =1';
 		$data['provinceOption1']=$this->iht_province_model->findByFilter($filter);
 		
-		
-    	//get menu 1
-    	$this->load->model('menu_model');
-    	$filters = ' WHERE parent_id = 4';
-    	$data['typemenu1']=$this->menu_model->find($filters);
+		//get main menu
+    	$data['main_menu'] = $this->front_lib->get_main_menu();
+    	
 		//get menu tin tuc
     	$this->load->model('menu_model');
     	$filters = ' WHERE parent_id = 15';

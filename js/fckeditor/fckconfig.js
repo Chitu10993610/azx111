@@ -62,7 +62,7 @@ FCKConfig.AutoDetectLanguage	= true ;
 FCKConfig.DefaultLanguage		= 'en' ;
 FCKConfig.ContentLangDirection	= 'ltr' ;
 
-FCKConfig.ProcessHTMLEntities	= true ;
+FCKConfig.ProcessHTMLEntities	= false ;
 FCKConfig.IncludeLatinEntities	= true ;
 FCKConfig.IncludeGreekEntities	= true ;
 
@@ -130,8 +130,8 @@ FCKConfig.ToolbarSets["Basic"] = [
 	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
 ] ;
 
-FCKConfig.EnterMode = 'br' ;			// p | div | br
-FCKConfig.ShiftEnterMode = 'p' ;	// p | div | br
+FCKConfig.EnterMode = 'p' ;			// p | div | br
+FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 
 FCKConfig.Keystrokes = [
 	[ CTRL + 65 /*A*/, true ],

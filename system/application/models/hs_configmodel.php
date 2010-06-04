@@ -133,23 +133,7 @@ var $create_user;
             // Build up a list for each column from the database and place it in
             // ...the result set
 
-			$query_results['id']		 = $row['id'];
-			$query_results['guide_name']		 = $row['guide_name'];
-			$query_results['contact_phone']		 = $row['contact_phone'];
-			$query_results['contact_mail']		 = $row['contact_mail'];
-			$query_results['fax']		 = $row['fax'];
-			$query_results['information']		 = $row['information'];
-			$query_results['service']		 		= $row['service'];
-			$query_results['guide_image']		 = $row['guide_image'];
-			$query_results['guide_center_address']		 = $row['guide_center_address'];
-			$query_results['center_name']		 = $row['center_name'];
-			$query_results['street_address']		 = $row['street_address'];
-			$query_results['city']		 = $row['city'];
-			$query_results['state']		 = $row['state'];
-			$query_results['zip']		 = $row['zip'];
-			$query_results['create_user']		 = $row['create_user'];
-
-			$results[]		 = $query_results;
+			$results[]		 = $row;
 
 
          }
@@ -174,23 +158,7 @@ var $create_user;
       if ($query->num_rows() > 0) {
          $row = $query->row_array();
 
-		$query_results['id']		 			= $row['id'];
-		$query_results['guide_name']		 = $row['guide_name'];
-		$query_results['contact_phone']		 = $row['contact_phone'];
-		$query_results['contact_mail']		 = $row['contact_mail'];
-		$query_results['information']		 = $row['information'];
-		$query_results['service']		 		= $row['service'];
-		$query_results['fax']		 = $row['fax'];
-		$query_results['guide_image']		 = $row['guide_image'];
-		$query_results['guide_center_address']		 = $row['guide_center_address'];
-		$query_results['center_name']		 = $row['center_name'];
-		$query_results['street_address']		 = $row['street_address'];
-		$query_results['city']		 = $row['city'];
-		$query_results['state']		 = $row['state'];
-		$query_results['zip']		 = $row['zip'];
-		$query_results['create_user']		 = $row['create_user'];
-
-		$results		 = $query_results;
+		$results		 = $row;
 
 
       }

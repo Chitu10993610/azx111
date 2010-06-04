@@ -194,7 +194,10 @@ var $province;
    function modify($keyvalue, $data) {
 
       // Build up the SQL query string
-      $where = " id = $keyvalue AND create_user = " . $data['create_user'];
+      $where = " id = $keyvalue";
+      if(!access(VIEW_ALL_ADS)) 
+      $where .= " AND create_user = " . $data['create_user'];
+      
       $sql = $this->db->update_string('properties', $data, $where);
 
       $query = $this->db->query($sql);
