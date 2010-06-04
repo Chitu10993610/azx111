@@ -15,14 +15,7 @@
 					<div  class="box2_4">
 						<div class="box2_4_1"><?=$thoitiet?></div>
 						<!-- BEGIN BOX 2.4.2-->
-						<div class="box2_4_2_bg">
-						<div  class="box2_4_2_left">
-						<div class="box2_4_2_right">
-							<div class="box2_4_2_head"><span>thế giới phụ nữ</span></div>
-							<ul class="box2_4_2_ul" >
 								<?=$thegioiphunu?>
-							</ul>	
-						</div></div></div>
 						<!-- END BOX 2.4.2-->
 						<!-- BEGIN BOX 2.4.3-->
 

@@ -96,6 +96,11 @@ class Cat extends Controller {
 
       $the_results['page_links'] = $this->pagination->create_links();
       $the_results['title'] = 'Danh sách tin';
+
+      //msg
+	if ($this->session->flashdata('msg')) {
+		$the_results['msg'] = $this->session->flashdata('msg');
+	}
    		
       $this->_display('/ci_news/cat_grid', $the_results);
    }
@@ -203,9 +208,22 @@ class Cat extends Controller {
 	function delete() {
 		$this->user_group_model->can_access(DELETE_CATEGORY_ADS, null, null);
 		$catid = $this->uri->segment(3);
-		$this->load->model('nny_catmodel');
-		$this->nny_catmodel->deleteCat($catid);
-			
+		$msg = '';
+		$filter['property_type'] = $catid;
+		//select ad from cat
+      	$this->load->model('ci_propertiesmodel');                  // Instantiate the model
+		$this->ci_propertiesmodel->findByFilter($filter, 0, 1);  // Send the retrievelist msg
+		if($this->ci_propertiesmodel->table_record_count) {
+			$msg = 'Chuyên mục này đang có tin, bạn phải xóa hết tin thuộc chuyên mục mới có thể xóa chuyên mục';
+		}
+		else {
+		
+			$this->load->model('nny_catmodel');
+			$this->nny_catmodel->deleteCat($catid);
+			$msg = 'Chuyên mục được xóa thành công';
+		}
+		
+		$this->session->set_flashdata('msg', $msg);	
 		redirect('cat', 'location');
 	}
 

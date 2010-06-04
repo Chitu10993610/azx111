@@ -5,7 +5,7 @@ foreach ($aryCatList as $aryCat) {
 	?>
 	<div class="box3_1" style="<?=$box_class?>">
 							<div class="box3_1_head">
-							<span><a href="<?=$aryCat['cat_id']?>" class="box1_2_box_head_a"><?=$aryCat['cat_name']?></a></span>
+							<span><a href="tin-tuc/<?=$aryCat['cat_id']?>" class="box1_2_box_head_a"><?=$aryCat['cat_name']?></a></span>
 						</div>
 						<ul class="box3_1_ul">
 														<?php

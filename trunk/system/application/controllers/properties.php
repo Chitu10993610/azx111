@@ -104,7 +104,9 @@ class Properties extends Controller {
    		
    	$this->user_group_model->can_access(ADD_ADS, null, null);
 //   	$this->load->library('firephp');
-//	$this->firephp->error('hehe');
+
+		$data = array();
+		
 
       $this->load->helper('url');
       $error = '';
@@ -190,6 +192,7 @@ class Properties extends Controller {
 				if(empty($error)) redirect($this->site_name.'properties/', 'location');
 	      	}
       }
+      else $data['property_type'] = $this->uri->segment(3, 0);
       
 		if(!$submit && !$submited) $data = $this->_clear_form();
 		
@@ -431,7 +434,7 @@ class Properties extends Controller {
 		$data['attach_files']		= $this->input->post('attach_files', TRUE);
 		$data['is_vip']		= (int)$this->input->post('is_vip', TRUE);
 		$data['is_hot']		= (int)$this->input->post('is_hot', TRUE);
-		$data['property_type']		= $this->input->post('property_type', TRUE);
+		$data['property_type']		= $this->uri->segment(3, $this->input->post('property_type', TRUE));
 		$data['price']		=  		$this->input->post('price', TRUE);
 //		exit($data['price']);
 		$data['create_user']		= $this->input->post('create_user', TRUE);

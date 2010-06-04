@@ -313,6 +313,7 @@ $config['rewrite_short_tags'] = FALSE;
 
 $config['log_errors'] = TRUE;
 
-
+//1 turn on cache, 0 turn off cache
+define('CACHE_ON', 0);
 
 ?>

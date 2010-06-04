@@ -92,11 +92,13 @@ class Upload_video extends Controller {
    //
    // //////////////////////////////////////////////////////////////////////////
    function playlist() {
-      $filter = ' WHERE video_status = 1';
-	  $aryVideoList = array();
-	  $the_results['aryVideoList'] = $this->iht_video_model->findByFilter($filter, 0, 10);
+		$this->load->model('hs_configmodel');
+		$dataConf = $this->hs_configmodel->findAll();
+		$filter = ' WHERE video_status = 1';
+		$aryVideoList = array();
+		$the_results['aryVideoList'] = $this->iht_video_model->findByFilter($filter, 0, $dataConf[0]['number_video']);
 		
-      exit($this->load->view('video/playlist', $the_results, true));
+		exit($this->load->view('video/playlist', $the_results, true));
    }
 
    // //////////////////////////////////////////////////////////////////////////
